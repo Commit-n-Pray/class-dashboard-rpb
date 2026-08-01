@@ -519,6 +519,13 @@ input, select, textarea {
   gap: 4rem;
 }
 
+/* Wali Kelas */
+.wali-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .section-header {
   display: flex;
   flex-direction: column;
