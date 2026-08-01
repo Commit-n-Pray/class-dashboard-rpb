@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri Kenangan | X-RPB SKARIGA</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-brand">
+      <img src="Assets/xrpb.jpg" alt="Logo Sekolah" class="school-logo">
+      <div class="brand-text">
+        <h1>X-RPB</h1>
+        <p>SMKS PGRI 3 MALANG</p>
+      </div>
+    </div>
+
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="beranda.html" class="nav-link">Beranda</a></li>
+        <li><a href="jadwal.html" class="nav-link">Jadwal & Seragam</a></li>
+        <li><a href="tugas.html" class="nav-link">Pengingat Tugas</a></li>
+        <li><a href="anggota.html" class="nav-link">Profil Anggota</a></li>
+        <li><a href="kas-info.html" class="nav-link">Kas & Info</a></li>
+        <li><a href="galeri.html" class="nav-link active">Galeri</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle-btn" title="Ganti Mode Tampilan">🌙</button>
+      <span class="user-badge" id="user-role-badge">Siswa</span>
+      <button class="btn-login btn-logout" id="nav-logout-btn">Keluar</button>
+    </div>
+  </header>
+
+  <main class="main-wrapper" style="margin-top: 100px;">
+    <section>
+      <div class="section-header">
+        <span class="section-badge">MEMORIES & GALLERY</span>
+        <h2 class="section-title">Galeri Kenangan Kelas</h2>
+        <p class="section-desc">Dokumentasi momen kebersamaan, kemenangan lomba, praktikum, dan acara spesial XII MIPA 1.</p>
+        <p class="section-note">Telusuri koleksi foto terbaik kami dari berbagai kegiatan kelas, persiapan lomba, dan acara seru yang mempererat persahabatan.</p>
+      </div>
+
+      <div class="gallery-grid" id="gallery-grid">
+        <figure class="gallery-item">
+          <a href="Assets/Skariga.png" target="_blank" rel="noopener">
+            <img src="Assets/Skariga.png" alt="Momen Kebersamaan" loading="lazy">
+          </a>
+          <figcaption>Momen Kebersamaan saat berkumpul.</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <a href="Assets/Skariga.png" target="_blank" rel="noopener">
+            <img src="Assets/Skariga.png" alt="Kemenangan Lomba" loading="lazy">
+          </a>
+          <figcaption>Kemenangan Lomba dan perayaan pasti.</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <a href="Assets/Skariga.png" target="_blank" rel="noopener">
+            <img src="Assets/Skariga.png" alt="Praktikum" loading="lazy">
+          </a>
+          <figcaption>Kerja tim dalam praktikum kelas.</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <a href="Assets/Skar.png" target="_blank" rel="noopener">
+            <img src="Assets/Skariga.png" alt="Acara Spesial" loading="lazy">
+          </a>
+          <figcaption>Acara Spesial penuh warna.</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <a href="Assets/Skariga.png" target="_blank" rel="noopener">
+            <img src="Assets/Skariga.png" alt="Persahabatan" loading="lazy">
+          </a>
+          <figcaption>Persahabatan dan tawa bersama.</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <a href="Assets/Skariga.png" target="_blank" rel="noopener">
+            <img src="Assets/Skariga.png" alt="Kenangan Kelas" loading="lazy">
+          </a>
+          <figcaption>Kenangan kelas yang tak terlupakan.</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <div class="music-player-widget">
+    <div class="music-disc" id="music-disc">🎵</div>
+    <div class="music-info">
+      <span class="music-title">Lo-Fi Study Ambient</span>
+      <span class="music-sub">Fokus Belajar Kelas</span>
+    </div>
+    <button class="btn-music-toggle" id="btn-music-toggle" onclick="APP.toggleMusic()">▶️ Play</button>
+  </div>
+  <audio id="bg-lofi-audio" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"></audio>
+
+  <footer class="footer">
+    <p>© 2026 <strong>X-RPB - SMKS PGRI 3 MALANG</strong>. All rights reserved.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
