@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beranda | Portal Kelas X-RPB SKARIGA</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-brand">
+      <img src="Assets/xrpb.jpg" alt="Logo Sekolah" class="school-logo">
+      <div class="brand-text">
+        <h1>X-RPB</h1>
+        <p>SMKS PGRI 3 MALANG</p>
+      </div>
+    </div>
+
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="beranda.html" class="nav-link active">Beranda</a></li>
+        <li><a href="jadwal.html" class="nav-link">Jadwal & Seragam</a></li>
+        <li><a href="tugas.html" class="nav-link">Pengingat Tugas</a></li>
+        <li><a href="anggota.html" class="nav-link">Profil Anggota</a></li>
+        <li><a href="kas-info.html" class="nav-link">Kas & Info</a></li>
+        <li><a href="galeri.html" class="nav-link">Galeri</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle-btn" title="Ganti Mode Tampilan">🌙</button>
+      <span class="user-badge" id="user-role-badge">Siswa</span>
+      <button class="btn-login btn-logout" id="nav-logout-btn">Keluar</button>
+    </div>
+  </header>
+
+  <!-- HERO ENTRANCE SECTION -->
+  <section class="hero-section" style="margin-top: 0;">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-pill">
+          <span>X-RPB CLASS 2026</span>
+        </div>
+        <h1 class="hero-title">
+          Selamat Datang di Website X-RPB<br>
+          <span>X-RPB SKARIGA</span>
+        </h1>
+        <p class="hero-description">
+          Pusat informasi terpadu kelas X-RPB. Akses halaman jadwal mapel & seragam harian, pengingat deadline tugas, profil pengurus & wali kelas, kas, dan galeri kenangan.
+        </p>
+        <div style="display: flex; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap;">
+          <a href="jadwal.html" class="btn-login" style="padding: 0.75rem 1.5rem; text-decoration: none;">Lihat Jadwal Pelajaran</a>
+          <a href="tugas.html" class="day-tab-btn" style="text-decoration: none;">Pengingat Tugas</a>
+        </div>
+      </div>
+
+      <!-- Today's Schedule & Uniform Banner -->
+      <div class="today-banner-card" id="hero-today-banner">
+        <img src="Assets/Skariga.png" alt="">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK ACCESS MENU CARDS -->
+  <main class="main-wrapper" style="gap: 2rem;">
+    <div class="section-header">
+      <span class="section-badge">QUICK ACCESS</span>
+      <h2 class="section-title">Menu Utama Kelas</h2>
+      <p class="section-desc">Pilih halaman yang ingin Anda buka secara cepat:</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem;">
+      <a href="jadwal.html" class="glass-box" style="text-decoration: none; transition: var(--transition);">
+        <span style="font-size: 2.2rem;"></span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Jadwal & Seragam</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Cek jadwal mapel harian dan ketentuan baju seragam sekolah.</p>
+      </a>
+
+      <a href="tugas.html" class="glass-box" style="text-decoration: none; transition: var(--transition);">
+        <span style="font-size: 2.2rem;"></span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengingat Tugas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Pantau deadline PR, praktikum, dan proyek kelas.</p>
+      </a>
+
+      <a href="anggota.html" class="glass-box" style="text-decoration: none; transition: var(--transition);">
+        <span style="font-size: 2.2rem;"></span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Profil Anggota</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Profil Wali Kelas, Ketua, Pengurus, Developer & Siswa.</p>
+      </a>
+
+      <a href="kas-info.html" class="glass-box" style="text-decoration: none; transition: var(--transition);">
+        <span style="font-size: 2.2rem;"></span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Kas & Pengumuman</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Transparansi kas bulanan dan bulletin board kelas.</p>
+      </a>
+
+      <a href="galeri.html" class="glass-box" style="text-decoration: none; transition: var(--transition);">
+        <span style="font-size: 2.2rem;"></span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Galeri Kenangan</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Dokumentasi foto kegiatan dan momen kebersamaan.</p>
+      </a>
+    </div>
+  </main>
+
+ <main class="main-wrapper" style="gap: 2rem;">
+
+    <div class="section-header">
+        <span class="section-badge">Info</span>
+        <h2 class="section-title">GURU WALI KELAS X-RPB</h2>
+        <p class="section-desc">LIST</p>
+    </div>
+
+    <div class="wali-container">
+        <div class="glass-box-center">
+            <span style="font-size:2.2rem;">
+                <img src="Assets/Skariga.png" alt="">
+            </span>
+
+            <h3>Wali Kelas X-RPB</h3>
+
+            <p>Nama Guru Wali Kelas X-RPB</p>
+        </div>
+    </div>
+
+</main>
+  
+  <main class="main-wrapper" style="gap: 2rem;">
+    <div class="section-header">
+      <span class="section-badge">Info</span>
+      <h2 class="section-title">MURID NGAWI</h2>
+      <p class="section-desc">LIST</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem;">
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Wali Kelas X-RPB</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Guru Wali Kelas X-RPB</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+
+      <div class="glass-box-center" style="text-decoration: none; transition: var(--transition); margin: 0; text-align: center;">
+        <span style="font-size: 2.2rem; display: block;">
+          <img src="Assets/Skariga.png" alt="" style="display: block; margin: 0 auto;">
+        </span>
+        <h3 style="font-size: 1.2rem; font-weight: 800;">Pengurus Kelas</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Nama Ketua dan Pengurus Kelas</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- MUSIC PLAYER -->
+  <div class="music-player-widget">
+    <div class="music-disc" id="music-disc">🎵</div>
+    <div class="music-info">
+      <span class="music-title">Lo-Fi Study Ambient</span>
+      <span class="music-sub">Fokus Belajar Kelas</span>
+    </div>
+    <button class="btn-music-toggle" id="btn-music-toggle" onclick="APP.toggleMusic()">▶️ Play</button>
+  </div>
+  <audio id="bg-lofi-audio" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"></audio>
+
+  <footer class="footer">
+    <p>© 2026 <strong>X-RPB - SMKS PGRI 3 MALANG</strong>. All rights reserved.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
