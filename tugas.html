@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengingat Tugas | X-RPB SKARIGA</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-brand">
+      <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=100&auto=format&fit=crop&q=80" alt="Logo Sekolah" class="school-logo">
+      <div class="brand-text">
+        <h1>X-RPB</h1>
+        <p>SMKS PGRI 3 MALANG</p>
+      </div>
+    </div>
+
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="beranda.html" class="nav-link">Beranda</a></li>
+        <li><a href="jadwal.html" class="nav-link">Jadwal & Seragam</a></li>
+        <li><a href="tugas.html" class="nav-link active">Pengingat Tugas</a></li>
+        <li><a href="anggota.html" class="nav-link">Profil Anggota</a></li>
+        <li><a href="kas-info.html" class="nav-link">Kas & Info</a></li>
+        <li><a href="galeri.html" class="nav-link">Galeri</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle-btn" title="Ganti Mode Tampilan">🌙</button>
+      <span class="user-badge" id="user-role-badge">Siswa</span>
+      <button class="btn-login btn-logout" id="nav-logout-btn">Keluar</button>
+    </div>
+  </header>
+
+  <main class="main-wrapper" style="margin-top: 100px;">
+    <section>
+      <div class="section-header">
+        <span class="section-badge">HOMEWORK & DEADLINES</span>
+        <h2 class="section-title">Pengingat Tugas & PR Kelas</h2>
+        <p class="section-desc">Pantau deadline tugas rumah, laporan praktikum, dan proyek kelompok agar selalu tepat waktu.</p>
+      </div>
+
+      <div class="tasks-control-bar">
+        <div class="task-filter-group">
+          <button class="filter-chip task-filter-chip active" onclick="RENDERER.filterTasks('Semua')">Semua Tugas</button>
+          <button class="filter-chip task-filter-chip" onclick="RENDERER.filterTasks('Belum')">Belum Selesai</button>
+          <button class="filter-chip task-filter-chip" onclick="RENDERER.filterTasks('Proses')">Dalam Proses</button>
+          <button class="filter-chip task-filter-chip" onclick="RENDERER.filterTasks('Selesai')">Selesai</button>
+        </div>
+
+        <!-- Pengurus/Wali/Dev Only -->
+        <button class="btn-add-task admin-only hidden-perm" onclick="APP.openModal('add-task-modal')">
+          ➕ Tambah Tugas Baru
+        </button>
+      </div>
+
+      <div class="task-grid" id="task-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL DIALOG TAMBAH TUGAS -->
+  <div class="modal-backdrop" id="add-task-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Tambah Tugas Pengingat Baru</h3>
+        <button class="btn-close-modal" onclick="APP.closeModal('add-task-modal')">&times;</button>
+      </div>
+      <form id="add-task-form">
+        <div class="form-group">
+          <label for="task-subject-input">Mata Pelajaran:</label>
+          <input type="text" id="task-subject-input" class="form-control" placeholder="Contoh: Fisika / Kimia" required>
+        </div>
+        <div class="form-group">
+          <label for="task-title-input">Judul Tugas / PR / Proyek:</label>
+          <input type="text" id="task-title-input" class="form-control" placeholder="Judul tugas..." required>
+        </div>
+        <div class="form-group">
+          <label for="task-date-input">Tanggal Deadline:</label>
+          <input type="date" id="task-date-input" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="task-priority-input">Tingkat Prioritas:</label>
+          <select id="task-priority-input" class="form-control">
+            <option value="Tinggi">Tinggi (Segera)</option>
+            <option value="Sedang" selected>Sedang</option>
+            <option value="Rendah">Rendah</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="task-note-input">Catatan / Instruksi Tugas:</label>
+          <textarea id="task-note-input" class="form-control" rows="3" placeholder="Instruksi pengumpulan..."></textarea>
+        </div>
+        <button type="submit" class="btn-login" style="width: 100%; margin-top: 0.5rem; justify-content: center;">
+          Simpan & Terbitkan Tugas
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="music-player-widget">
+    <div class="music-disc" id="music-disc">🎵</div>
+    <div class="music-info">
+      <span class="music-title">Lo-Fi Study Ambient</span>
+      <span class="music-sub">Fokus Belajar Kelas</span>
+    </div>
+    <button class="btn-music-toggle" id="btn-music-toggle" onclick="APP.toggleMusic()">▶️ Play</button>
+  </div>
+  <audio id="bg-lofi-audio" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"></audio>
+
+  <footer class="footer">
+    <p>© 2026 <strong>X-RPB - SMKS PGRI 3 MALANG</strong>. All rights reserved.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
