@@ -16,20 +16,9 @@
         :root {
             --apple-bg: var(--bg-main, #121212);
             --apple-card: var(--bg-card, rgba(22, 28, 45, 0.75));
-            --apple-card-solid: var(--bg-card-solid, #161c2d);
             --apple-border: var(--border-color, rgba(255, 255, 255, 0.08));
             --apple-blue: var(--accent-primary, #0059ff);
-            --dawn-glow: var(--accent-amber, #f59e0b);
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        [data-theme="light"] {
-            --apple-bg: var(--bg-main);
-            --apple-card: var(--bg-card);
-            --apple-card-solid: var(--bg-card-solid);
-            --apple-border: var(--border-color);
-            --apple-blue: var(--accent-primary);
-            --dawn-glow: var(--accent-amber);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -40,7 +29,7 @@
             font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
             -webkit-font-smoothing: antialiased;
             min-height: 100dvh;
-            background-image: radial-gradient(circle at top right, color-mix(in srgb, var(--apple-blue) 12%, transparent), transparent 40%);
+            background-image: radial-gradient(circle at top right, rgba(0, 122, 255, 0.05), transparent 40%);
         }
 
         nav {
@@ -62,8 +51,8 @@
 
         .active-day {
             border-color: var(--apple-blue);
-            background: color-mix(in srgb, var(--apple-blue) 12%, transparent);
-            box-shadow: 0 0 40px color-mix(in srgb, var(--apple-blue) 12%, transparent);
+            background: rgba(0, 122, 255, 0.08);
+            box-shadow: 0 0 40px rgba(0, 122, 255, 0.1);
             transform: scale(1.02);
         }
 
