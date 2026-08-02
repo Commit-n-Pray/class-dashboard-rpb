@@ -213,13 +213,18 @@
       color: white; display: flex; align-items: center; justify-content: center;
       cursor: pointer; z-index: 100;
     }
+
+    .playfair { font-family: 'Playfair Display', serif; }
   </style>
 </head>
 <body id="login-landing-view">
 
   <div class="split-container">
     
-    <!-- LEFT SIDE: BRANDING -->      
+    <!-- LEFT SIDE: BRANDING -->
+    <div class="branding-side">
+
+      
       <div class="branding-content">
         <div class="flex items-center gap-4 mb-10">
           <img src="Assets/xrpb.jpg" alt="Logo" class="w-12 h-12 rounded-xl shadow-2xl border border-white/20">
@@ -229,16 +234,16 @@
           </div>
         </div>
 
-        <div class="badge-premium">KAREPMU</div>
+
         
         <h1 class="hero-text">
-          EDIT <span class="playfair italic text-blue-400">SAK KAREPMU</span> KELAS XRPB <span class="gold">RPL</span> JAYA.
+          EDIT <span class="playfair italic text-blue-400">SAK KAREPMU</span> RPB JAYA <span class="gold">AKU</span> GA NGURUS.
         </h1>
       </div>
 
       <div class="contact-info">
-        <p>Akun Instagram XRPB - Skariga</p>
-        <p>+62 081xxxxxx NOMORE BU FEBRI (Opsional)</p>
+        <p>Akun Instagram XRPB + Skariga</p>
+        <p>+62 081XXXX nomore bu Febri (Opsional)</p>
       </div>
     </div>
 
@@ -280,7 +285,7 @@
         </form>
 
         <div class="mt-12 pt-8 border-t border-gray-100 text-center">
-            <p class="text-[10px] uppercase tracking-[3px] text-gray-300 font-bold">X-RPB Core Architecture</p>
+            <p class="text-[10px] uppercase tracking-[3px] text-gray-300 font-bold">Remon Core Architecture</p>
         </div>
       </div>
     </div>
@@ -303,7 +308,6 @@
         
         const role = card.getAttribute('data-role');
         const passGroup = document.getElementById('landing-pass-group');
-        // Logic show/hide pass group based on role
         if (role !== 'siswa') {
           passGroup.classList.remove('hidden');
         } else {
