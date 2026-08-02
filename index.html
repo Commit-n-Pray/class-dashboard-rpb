@@ -3,75 +3,290 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Resmi X-RPB SKARIGA | Login Entrance 2020</title>
-  <meta name="description" content="Website resmi kelas XII MIPA 1 dengan Login Entrance 2020. Masuk untuk melihat jadwal, tugas, profil, dan kas.">
-  <link rel="stylesheet" href="css/style.css">
+  <title>Website Resmi X-RPB SKARIGA | Sovereign Archive</title>
+  
+  <!-- Premium UI Stack -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --apple-blue: #007AFF;
+      --apple-indigo: #5856D6;
+      --bg-left: #0F172A;
+      --bg-right: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    .split-container {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .branding-side {
+      flex: 1.2;
+      background: radial-gradient(circle at top right, #1E293B, #0F172A);
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      color: white;
+    }
+
+    .branding-side::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 30px 30px;
+      opacity: 0.5;
+    }
+
+    .branding-content { position: relative; z-index: 10; }
+
+    .badge-premium {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(50, 215, 75, 0.1);
+      border: 1px solid rgba(50, 215, 75, 0.3);
+      color: #32D74B;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 50px;
+      margin-bottom: 40px;
+    }
+
+    .hero-text {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
+
+    .hero-text span {
+      color: #FACC15; 
+    }
+
+    .contact-info {
+      display: flex;
+      gap: 20px;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+
+    .login-side {
+      flex: 0.8;
+      background: #FFFFFF;
+      padding: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1C1C1E;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .login-header p {
+      font-size: 14px;
+      color: #8E8E93;
+      margin-bottom: 40px;
+    }
+
+    .role-selector-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .role-card-opt {
+      padding: 15px;
+      border: 1.5px solid #E5E5EA;
+      border-radius: 16px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      font-size: 12px;
+      font-weight: 600;
+      color: #3A3A3C;
+    }
+
+    .role-card-opt:hover { border-color: var(--apple-blue); }
+    .role-card-opt.selected {
+      background: rgba(0, 122, 255, 0.05);
+      border-color: var(--apple-blue);
+      color: var(--apple-blue);
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1C1C1E;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 16px 20px;
+      background: #F2F2F7;
+      border: 1.5px solid transparent;
+      border-radius: 14px;
+      outline: none;
+      transition: 0.3s;
+      margin-bottom: 15px;
+    }
+
+    .form-control:focus {
+      border-color: var(--apple-blue);
+      background: #FFF;
+      box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 18px;
+      background: #5856D6; 
+      color: white;
+      border: none;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(88, 86, 214, 0.3);
+      transition: 0.4s;
+      margin-top: 10px;
+    }
+
+    .btn-login:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(88, 86, 214, 0.4); }
+
+    @media (max-width: 1024px) {
+      .split-container { flex-direction: column; }
+      .branding-side { flex: none; min-height: 40vh; padding: 40px; }
+      .login-side { flex: none; padding: 40px 24px; background: white; border-radius: 30px 30px 0 0; margin-top: -30px; position: relative; z-index: 20; }
+      .hero-text { font-size: 2.2rem; }
+    }
+
+    .hidden { display: none !important; }
+  </style>
 </head>
-<body>
+<body id="login-landing-view">
 
-  <!-- HALAMAN UTAMA LOGIN (LOGIN GATEWAY LANDING 2020) -->
-  <div class="login-landing-container" id="login-landing-view">
-    <div class="login-top-bar">
-      <button class="theme-toggle-btn" title="Ganti Mode Tampilan">🌙</button>
-    </div>
-
-    <div class="login-card-2020">
-      <div class="login-header-branding">
-        <img src="Assets/xrpb.jpg" alt="Logo Sekolah" class="login-logo">
-        <h1 class="login-title">X-RPB SKARIGA PORTAL</h1>
-        <p class="login-subtitle">SMKS PGRI 3 MALANG • CLASS OF 2026-2029</p>
-      </div>
-
-      <form id="landing-login-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
-        <div class="form-group">
-          <label style="font-weight: 700; font-size: 0.85rem;">Pilih Role / Hak Akses:</label>
-          <div class="role-selector-grid">
-            <div class="role-card-opt selected" data-role="siswa" onclick="APP.selectRole('siswa')">
-              <span class="role-icon"></span>
-              <span class="role-name">Siswa / Tamu</span>
-            </div>
-            <div class="role-card-opt" data-role="pengurus" onclick="APP.selectRole('pengurus')">
-              <span class="role-name">Pengurus Kelas</span>
-            </div>
-            <div class="role-card-opt" data-role="walikelas" onclick="APP.selectRole('walikelas')">
-              <span class="role-name">Wali Kelas</span>
-            </div>
-            <div class="role-card-opt" data-role="dev" onclick="APP.selectRole('dev')">
-              <span class="role-name">Developer</span>
-            </div>
+  <div class="split-container">
+    
+    <div class="branding-side">
+      <div class="branding-content">
+        <div class="flex items-center gap-4 mb-10">
+          <img src="Assets/xrpb.jpg" alt="Logo" class="w-12 h-12 rounded-full border-2 border-white/20">
+          <div>
+            <h3 class="font-bold tracking-tighter text-xl">X-RPB SKARIGA</h3>
+            <p class="text-[10px] opacity-60 tracking-[3px] uppercase">Website Class</p>
           </div>
         </div>
+        
+        <h1 class="hero-text">
+          EDIT <span class="playfair italic">SAK</span> Karep wes <span>BERSAMA</span> SAMA.
+        </h1>
+      </div>
 
-        <div class="form-group">
-          <label for="landing-name-input">Nama Pengguna:</label>
-          <input type="text" id="landing-name-input" class="form-control" placeholder="Masukkan nama Anda (Opsional)..." required>
-        </div>
-
-        <div class="form-group" id="landing-pass-group" style="display: none;">
-          <label for="landing-pass-input">PIN / Password Akses:</label>
-          <input type="password" id="landing-pass-input" class="form-control" placeholder="Masukkan PIN Role...">
-          <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.25rem;">
-             <strong>PIN Demo Akses:</strong><br>
-            • Pengurus Kelas: <code>1234</code><br>
-            • Wali Kelas: <code>guru123</code><br>
-            • Developer: <code>dev123</code>
-          </small>
-        </div>
-
-        <button type="submit" class="btn-login" style="width: 100%; padding: 0.85rem; justify-content: center; font-size: 1rem;">
-           Masuk Ke Portal Kelas
-        </button>
-      </form>
-
-      <div style="text-align: center; font-size: 0.75rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 1rem;">
-        Website Resmi Kelas X-RPB SKARIGA
+      <div class="contact-info">
+        <p>AKUN IG XRPB - SKARIGA</p>
+        <p>+62 812-XXXX-XXXX NOMERE BU FEBRI (OPSIONAL)</p>
       </div>
     </div>
+
+    <!-- SISI KANAN (FORM LOGIN) -->
+    <div class="login-side">
+      <div class="login-box">
+        <header class="login-header">
+          <h2>Portal Masuk</h2>
+          <p>Selamat datang kembali. Silakan pilih role dan masukkan nama untuk melanjutkan aktivitas Anda.</p>
+        </header>
+
+        <!-- FORM TETAP PAKE ID LAMA BIAR LOGIC JS JALAN -->
+        <form id="landing-login-form">
+          <div class="form-group mb-6">
+            <label>Pilih Role / Hak Akses:</label>
+            <div class="role-selector-grid">
+              <div class="role-card-opt selected" data-role="siswa" onclick="APP.selectRole('siswa')">
+                Siswa / Tamu
+              </div>
+              <div class="role-card-opt" data-role="pengurus" onclick="APP.selectRole('pengurus')">
+                Pengurus Kelas
+              </div>
+              <div class="role-card-opt" data-role="walikelas" onclick="APP.selectRole('walikelas')">
+                Wali Kelas
+              </div>
+              <div class="role-card-opt" data-role="dev" onclick="APP.selectRole('dev')">
+                Developer
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="landing-name-input">Nama Pengguna:</label>
+            <input type="text" id="landing-name-input" class="form-control" placeholder="Contoh: Remon Core" required>
+          </div>
+
+          <!-- GROUP PIN (LOGIC JS UNTUK SHOW/HIDE) -->
+          <div id="landing-pass-group" class="hidden">
+            <div class="flex justify-between items-center">
+              <label for="landing-pass-input">PIN:</label>
+            </div>
+            <input type="password" id="landing-pass-input" class="form-control" placeholder="••••••">
+          </div>
+
+          <button type="submit" class="btn-login">
+             Masuk ke Portal
+          </button>
+        </form>
+
+        <div class="text-center mt-10">
+        </div>
+      </div>
+    </div>
+
   </div>
 
+  <!-- SCRIPT KONFIGURASI JANGAN DIRUBAH (HATI-HATI) -->
   <script src="js/data.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/components.js"></script>
   <script src="js/app.js"></script>
+  
+  <script>
+    // Script kecil tambahan buat handle tampilan UI role yang diklik
+    const roleCards = document.querySelectorAll('.role-card-opt');
+    roleCards.forEach(card => {
+      card.addEventListener('click', () => {
+        roleCards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        
+        // Show pass group if not siswa
+        const role = card.getAttribute('data-role');
+        const passGroup = document.getElementById('landing-pass-group');
+        if (role !== 'siswa') {
+          passGroup.classList.remove('hidden');
+        } else {
+          passGroup.classList.add('hidden');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
