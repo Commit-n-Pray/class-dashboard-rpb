@@ -59,11 +59,11 @@ const RENDERER = {
         <span style="font-size: 0.8rem; color: var(--text-muted);">${new Date().toLocaleDateString('id-ID', { dateStyle: 'full' })}</span>
       </div>
       <div class="today-uniform-box">
-        <strong>👕 Baju Seragam Hari Ini:</strong>
+        <strong>Baju Seragam Hari Ini:</strong>
         <p style="font-weight: 700; color: var(--text-main); margin-top: 0.2rem;">${todaySched.icon} ${todaySched.uniform}</p>
       </div>
       <div>
-        <strong style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">📚 Pelajaran Hari Ini (${todaySched.subjects.length} Mapel):</strong>
+        <strong style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Pelajaran Hari Ini (${todaySched.subjects.length} Mapel):</strong>
         <ul style="list-style: none; margin-top: 0.4rem; display: flex; flex-direction: column; gap: 0.35rem;">
           ${todaySched.subjects.map(sub => `
             <li style="font-size: 0.85rem; display: flex; justify-content: space-between; background: var(--bg-card-solid); padding: 0.4rem 0.6rem; border-radius: var(--radius-sm);">
@@ -115,11 +115,11 @@ const RENDERER = {
       <div class="timetable-grid" style="margin-top: 1.25rem;">
         ${sched.subjects.map(sub => `
           <div class="subject-card">
-            <div class="subject-time">⏰ ${sub.time}</div>
+            <div class="subject-time">${sub.time}</div>
             <h4 class="subject-name">${sub.name}</h4>
             <div class="subject-meta">
-              <span>📍 Ruang: <strong>${sub.room}</strong></span>
-              <span>👨‍🏫 Pengampu: <strong>${sub.teacher}</strong></span>
+              <span>Ruang: <strong>${sub.room}</strong></span>
+              <span>👨Pengampu: <strong>${sub.teacher}</strong></span>
             </div>
           </div>
         `).join('')}
@@ -156,7 +156,7 @@ const RENDERER = {
         <h4 class="task-title">${task.title}</h4>
         <div class="task-note">📌 ${task.note}</div>
         <div class="task-footer">
-          <span>📅 Deadline: <strong>${task.dueDate}</strong></span>
+          <span>Deadline: <strong>${task.dueDate}</strong></span>
           <label class="task-status-checkbox">
             <input type="checkbox" ${task.status === 'Selesai' ? 'checked' : ''} onchange="RENDERER.toggleTaskStatus('${task.id}')">
             <span style="font-weight: 700; color: ${task.status === 'Selesai' ? 'var(--accent-emerald)' : 'var(--text-main)'};">
@@ -208,7 +208,7 @@ const RENDERER = {
         <span class="member-role-badge">${m.role}</span>
         <p class="member-quote">"${m.quote}"</p>
         <div style="margin-top: 0.85rem; font-size: 0.75rem; color: var(--accent-cyan); font-weight: 600;">
-          📱 IG: ${m.instagram}
+          IG: ${m.instagram}
         </div>
       </div>
     `).join('');
@@ -258,7 +258,7 @@ const RENDERER = {
           <span style="font-size: 0.7rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: var(--radius-full); background: var(--accent-primary); color: #fff;">
             ${ann.category}
           </span>
-          <span class="announcement-date">📅 ${ann.date}</span>
+          <span class="announcement-date">${ann.date}</span>
         </div>
         <h4 class="announcement-title">${ann.title}</h4>
         <p style="font-size: 0.85rem; color: var(--text-muted);">${ann.content}</p>
