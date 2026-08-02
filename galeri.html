@@ -13,6 +13,7 @@
 })();
 </script>
   <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
 
@@ -44,7 +45,7 @@
   </header>
 
   <main class="main-wrapper" style="margin-top: 100px;">
-    <section>
+    <section data-aos="fade-up">
       <div class="section-header">
         <span class="section-badge">MEMORIES & GALLERY</span>
         <h2 class="section-title">Galeri Kenangan Kelas</h2>
@@ -52,7 +53,7 @@
         <p class="section-note">Telusuri koleksi foto terbaik kami dari berbagai kegiatan kelas, persiapan lomba, dan acara seru yang mempererat persahabatan.</p>
       </div>
 
-      <div class="gallery-grid" id="gallery-grid">
+      <div class="gallery-grid" id="gallery-grid" data-aos="zoom-in">
         <figure class="gallery-item">
           <a href="Assets/Skariga.png" target="_blank" rel="noopener">
             <img src="Assets/Skariga.png" alt="Momen Kebersamaan" loading="lazy">
@@ -116,5 +117,6 @@
   <script src="js/auth.js"></script>
   <script src="js/components.js"></script>
   <script src="js/app.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script><script>AOS.init({duration:900,once:true});</script>
 </body>
 </html>

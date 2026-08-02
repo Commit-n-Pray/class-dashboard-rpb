@@ -13,6 +13,7 @@
 })();
 </script>
   <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
 
@@ -45,7 +46,7 @@
   </header>
 
   <!-- HERO ENTRANCE SECTION -->
-  <section class="hero-section" style="margin-top: 0;">
+  <section data-aos="fade-up" class="hero-section" style="margin-top: 0;">
     <div class="hero-container">
       <div class="hero-content">
         <div class="hero-pill">
@@ -65,7 +66,7 @@
       </div>
 
       <!-- Today's Schedule & Uniform Banner -->
-      <div class="today-banner-card" id="hero-today-banner">
+      <div class="today-banner-card" id="hero-today-banner" data-aos="zoom-in">
         <img src="Assets/Skariga.png" alt="">
         <!-- Rendered dynamically -->
       </div>
@@ -444,5 +445,6 @@
   <script src="js/auth.js"></script>
   <script src="js/components.js"></script>
   <script src="js/app.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script><script>AOS.init({duration:900,once:true});</script>
 </body>
 </html>
