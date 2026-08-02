@@ -1,12 +1,8 @@
-/* ==========================================================================
-   2020 MODERN CLASSROOM DESIGN SYSTEM (DARK & LIGHT MODE ENHANCED)
-   ========================================================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
-/* --- 1. CSS VARIABLES FOR THEMES --- */
+/* --- 1. CSS VARIABLES FOR TEMA --- */
 :root {
-  /* Dark Mode Default (2020 Cyber Academic Palette) */
+  /* Dark Mode Default */
   --bg-main: #121212;
   --bg-card: rgba(22, 28, 45, 0.75);
   --bg-card-solid: #161c2d;
@@ -24,8 +20,8 @@
   --accent-primary: #0059ff; 
   --accent-secondary: #0059ff; 
   --accent-cyan: #0059ff; 
-  --accent-emerald: #0059ff; /* Emerald Green */
-  --accent-amber: #f59e0b; /* Warning Amber */
+  --accent-emerald: #0059ff; 
+  --accent-amber: #f59e0b;
 
   --gradient-hero: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(6, 44, 197, 0.15) 50%, rgba(6, 61, 212, 0.15) 100%);
   --gradient-badge: linear-gradient(135deg, #0059ff, #0059ff);
@@ -64,8 +60,8 @@
   --accent-primary: #0059ff; 
   --accent-secondary: #0059ff; 
   --accent-cyan: #0059ff; 
-  --accent-emerald: #0059ff; /* Emerald Green */
-  --accent-amber: #f59e0b; /* Warning Amber */
+  --accent-emerald: #0059ff;
+  --accent-amber: #f59e0b;
 
   --gradient-hero: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(6, 44, 197, 0.15) 50%, rgba(6, 61, 212, 0.15) 100%);
   --gradient-badge: linear-gradient(135deg, #0059ff, #0059ff);
@@ -124,7 +120,7 @@ input, select, textarea {
   color: inherit;
 }
 
-/* --- 3. LOGIN LANDING PAGE (HALAMAN UTAMA LOGIN 2020) --- */
+/* --- 3. LOGIN LANDING PAGE HALAMAN --- */
 .login-landing-container {
   min-height: 100vh;
   width: 100%;
@@ -374,7 +370,7 @@ input, select, textarea {
   color: #fff;
 }
 
-/* --- 5. HERO ENTRANCE SECTION ("HALAMAN MASUK KEREN") --- */
+/* --- 5. HERO ENTRANCE SECTION Halaman masuk --- */
 .hero-section {
   padding-top: 120px;
   padding-bottom: 60px;
@@ -552,7 +548,7 @@ input, select, textarea {
   color: var(--text-muted);
 }
 
-/* --- 7. SCHEDULE & UNIFORM TAB SYSTEM --- */
+/* --- 7. JADWAL & SERAGAM TAB SYSTEM --- */
 .schedule-container {
   display: flex;
   flex-direction: column;
@@ -659,7 +655,7 @@ input, select, textarea {
   gap: 0.2rem;
 }
 
-/* --- 8. TASK REMINDER SECTION ("TUGAS PENGINGAT") --- */
+/* --- 8. TASK REMINDER SECTION TUGAS PENGINGAT --- */
 .tasks-control-bar {
   display: flex;
   align-items: center;
@@ -862,7 +858,7 @@ input, select, textarea {
   overflow: hidden;
 }
 
-/* --- 10. EXTRA FEATURES: KAS, ANNOUNCEMENTS, GALLERY --- */
+/* --- 10. Extra Fitur: KAS, ANNOUNCEMENTS, GALLERY --- */
 .extra-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -880,9 +876,8 @@ input, select, textarea {
   gap: 1.25rem;
 }
 
+/* Profil card */
 .glass-box-center {
-  /* convert into a person card: image on top, text below */
-  /* make each card a fixed-width inline block so new cards flow horizontally */
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -897,11 +892,12 @@ input, select, textarea {
   padding: 0.5rem;
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
   margin: 0.5rem;
-  vertical-align: top; /* keep cards aligned at top when side-by-side */
+  vertical-align: top;
 }
 
+/* Adaptif image center*/
 .glass-box-center img {
-  /* make image adaptive while keeping a card-like cropped area */
+
   width: 100%;
   height: auto;
   max-height: 220px;
@@ -911,7 +907,7 @@ input, select, textarea {
 }
 
 .person-card-meta {
-  /* text area below the image */
+
   text-align: center;
   width: 100%;
   padding: 0.25rem 0.5rem 0.5rem;
@@ -1007,7 +1003,7 @@ input, select, textarea {
   opacity: 1;
 }
 
-/* --- 11. FLOATING MUSIC PLAYER WIDGET --- */
+/* --- 11. Musik --- */
 .music-player-widget {
   position: fixed;
   bottom: 2rem;
