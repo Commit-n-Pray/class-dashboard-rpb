@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Portal Resmi X-RPB SKARIGA | Sovereign Archive</title>
+  <link rel="stylesheet" href="css/style.css">
   
   <!-- Premium UI Stack -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,700&display=swap" rel="stylesheet">
-  
   <style>
     :root {
       --apple-blue: #007AFF;
@@ -213,8 +213,6 @@
       color: white; display: flex; align-items: center; justify-content: center;
       cursor: pointer; z-index: 100;
     }
-
-    .playfair { font-family: 'Playfair Display', serif; }
   </style>
 </head>
 <body id="login-landing-view">
@@ -298,6 +296,8 @@
   <script src="js/components.js"></script>
   <script src="js/app.js"></script>
   
+  <script src="js/auth.js" defer></script>
+
   <script>
     // Local UI Logic (Role Selection Styling)
     const roleCards = document.querySelectorAll('.role-card-opt');
@@ -308,6 +308,7 @@
         
         const role = card.getAttribute('data-role');
         const passGroup = document.getElementById('landing-pass-group');
+        // Logic show/hide pass group based on role
         if (role !== 'siswa') {
           passGroup.classList.remove('hidden');
         } else {
