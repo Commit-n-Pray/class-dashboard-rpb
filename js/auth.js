@@ -89,5 +89,23 @@ const AUTH = {
         }
       });
     }
+
+     // Local UI Logic (Role Selection Styling)
+    const roleCards = document.querySelectorAll('.role-card-opt');
+    roleCards.forEach(card => {
+      card.addEventListener('click', () => {
+        roleCards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        
+        const role = card.getAttribute('data-role');
+        const passGroup = document.getElementById('landing-pass-group');
+        // Logic show/hide pass group based on role
+        if (role !== 'siswa') {
+          passGroup.classList.remove('hidden');
+        } else {
+          passGroup.classList.add('hidden');
+        }
+      });
+    });
   }
 };
