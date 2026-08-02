@@ -72,6 +72,7 @@
     }
 
     .hero-text span.gold { color: #FACC15; }
+    .playfair { font-family: 'Playfair Display', serif; }
 
     .contact-info {
       position: relative;
@@ -214,7 +215,6 @@
       cursor: pointer; z-index: 100;
     }
   </style>
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body id="login-landing-view">
 
@@ -233,10 +233,10 @@
           </div>
         </div>
 
-        <div class="badge-premium">Class System v3.1</div>
+        <div class="badge-premium">Class Portal v3.1</div>
         
         <h1 class="hero-text">
-          Arsitektur <span class="playfair italic text-blue-400">Digital</span> Kelas untuk Masa Depan <span class="gold">RPL</span> Bersama.
+          EDIT <span class="playfair italic text-blue-400">SAK KAREPMU</span> RPB JAYA <span class="gold">AKU</span> GA NGURUS.
         </h1>
       </div>
 
@@ -254,15 +254,14 @@
           <p>Silakan pilih role dan identitas Anda untuk mengakses sistem informasi internal kelas.</p>
         </header>
 
-        <!-- FORM ID & FUNCTION TETAP SAMA AGAR TIDAK HANCUR -->
         <form id="landing-login-form">
           <div class="form-group">
             <label>Pilih Hak Akses:</label>
             <div class="role-selector-grid">
-              <div class="role-card-opt selected" data-role="siswa" onclick="APP.selectRole('siswa')" data-aos="zoom-in">Siswa</div>
-              <div class="role-card-opt" data-role="pengurus" onclick="APP.selectRole('pengurus')" data-aos="zoom-in">Pengurus</div>
-              <div class="role-card-opt" data-role="walikelas" onclick="APP.selectRole('walikelas')" data-aos="zoom-in">Wali Kelas</div>
-              <div class="role-card-opt" data-role="dev" onclick="APP.selectRole('dev')" data-aos="zoom-in">Developer</div>
+              <div class="role-card-opt selected" data-role="siswa" onclick="APP.selectRole('siswa')">Siswa</div>
+              <div class="role-card-opt" data-role="pengurus" onclick="APP.selectRole('pengurus')">Pengurus</div>
+              <div class="role-card-opt" data-role="walikelas" onclick="APP.selectRole('walikelas')">Wali Kelas</div>
+              <div class="role-card-opt" data-role="dev" onclick="APP.selectRole('dev')">Developer</div>
             </div>
           </div>
 
@@ -298,7 +297,7 @@
   <script src="js/app.js"></script>
   
   <script>
-    // Local UI Logic (Role Selection Styling)
+    // Local UI Logic
     const roleCards = document.querySelectorAll('.role-card-opt');
     roleCards.forEach(card => {
       card.addEventListener('click', () => {
@@ -307,7 +306,6 @@
         
         const role = card.getAttribute('data-role');
         const passGroup = document.getElementById('landing-pass-group');
-        // Logic show/hide pass group based on role
         if (role !== 'siswa') {
           passGroup.classList.remove('hidden');
         } else {
@@ -316,6 +314,5 @@
       });
     });
   </script>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script><script>AOS.init({duration:900,once:true});</script>
 </body>
 </html>
