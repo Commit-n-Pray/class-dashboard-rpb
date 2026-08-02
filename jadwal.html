@@ -5,10 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profil Anggota | X-RPB SKARIGA</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="Assets/xrpb.jpg" type="image/x-icon">
-  <link rel="shortcut icon" href="Assets/xrpb.jpg" type="image/x-icon">
-  <link rel="apple-touch-icon" href="Assets/xrpb.jpg">
-  <link rel="manifest" href="manifest.json">
 </head>
 <body>
       <!-- Premium UI Stack -->
@@ -29,29 +25,28 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
-            background-color: var(--apple-bg);
-            color: #F5F5F7;
-            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            min-height: 100dvh;
-            background-image: radial-gradient(circle at top right, rgba(0, 122, 255, 0.05), transparent 40%);
-        }
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100dvh;
+    background-image: radial-gradient(circle at top right,
+        rgba(0,122,255,.05), transparent 40%);
+}
 
-        nav {
-            background: rgba(15, 17, 26, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--apple-border);
-        }
-
+        .navbar {
+    background: var(--bg-nav);
+    backdrop-filter: var(--backdrop-blur);
+    border-bottom: 1px solid var(--border-color);
+}
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(25px) saturate(180%);
-            -webkit-backdrop-filter: blur(25px) saturate(180%);
-            border: 1px solid var(--apple-border);
-            border-radius: 28px;
-            transition: all 0.5s var(--ease);
-        }
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border-radius: 28px;
+    transition: all .5s var(--ease);
+}
 
         .active-day {
             border-color: var(--apple-blue);
@@ -67,17 +62,18 @@
         }
 
         .subject-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            padding: 14px 20px;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: 0.3s;
-        }
+    background: var(--bg-card-solid);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    border-radius: 14px;
+    padding: 14px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: .3s;
+}
 
         .subject-badge:hover {
             background: rgba(255, 255, 255, 0.08);
