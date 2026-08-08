@@ -14,7 +14,347 @@
 </script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,700&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,700&display=swap" rel="stylesheet">
+  
+  <!-- ===== APPLE DESIGN OVERRIDES (dashboard) — hanya tampilan, fitur tidak diubah ===== -->
+  <style>
+    /* ---------- VARIABEL TEMA ALa APPLE ---------- */
+    :root {
+      --apple-bg: #f5f5f7;
+      --apple-nav: rgba(255, 255, 255, 0.72);
+      --apple-card: rgba(255, 255, 255, 0.6);
+      --apple-card-solid: rgba(255, 255, 255, 0.92);
+      --apple-border: rgba(0, 0, 0, 0.08);
+      --apple-text: #1d1d1f;
+      --apple-text-2: #6e6e73;
+      --apple-accent: #0071e3;
+      --apple-accent-2: #5856d6;
+      --apple-red: #ff3b30;
+      --apple-shadow: 0 18px 50px rgba(0, 0, 0, 0.1);
+      --apple-shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.08);
+      --apple-radius: 26px;
+      --apple-radius-lg: 34px;
+      --apple-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+      /* Sinkronkan variabel lama yang dipakai template dinamis (components.js) */
+      --text-main: #1d1d1f;
+      --text-muted: #6e6e73;
+      --text-inverse: #f5f5f7;
+      --bg-card-solid: rgba(255, 255, 255, 0.92);
+      --bg-input: rgba(0, 0, 0, 0.05);
+      --accent-primary: #0071e3;
+      --accent-secondary: #5856d6;
+      --accent-cyan: #0071e3;
+      --accent-emerald: #34c759;
+      --radius-sm: 14px;
+      --radius-md: 22px;
+      --transition: all 0.35s var(--apple-ease);
+      --shadow-glow: 0 10px 40px rgba(0, 113, 227, 0.25);
+    }
+
+    [data-theme="dark"] {
+      --apple-bg: #000;
+      --apple-nav: rgba(22, 22, 24, 0.7);
+      --apple-card: rgba(30, 30, 32, 0.55);
+      --apple-card-solid: rgba(44, 44, 46, 0.78);
+      --apple-border: rgba(255, 255, 255, 0.12);
+      --apple-text: #f5f5f7;
+      --apple-text-2: #a1a1a6;
+      --apple-accent: #2997ff;
+      --apple-accent-2: #bf5af2;
+      --apple-red: #ff453a;
+      --apple-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+      --apple-shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.3);
+
+      --text-main: #f5f5f7;
+      --text-muted: #a1a1a6;
+      --text-inverse: #000;
+      --bg-card-solid: rgba(44, 44, 46, 0.78);
+      --bg-input: rgba(255, 255, 255, 0.08);
+      --accent-primary: #2997ff;
+      --accent-secondary: #bf5af2;
+      --accent-cyan: #64d2ff;
+      --accent-emerald: #30d158;
+      --shadow-glow: 0 10px 40px rgba(41, 151, 255, 0.35);
+    }
+
+    body {
+      background-color: var(--apple-bg);
+      color: var(--apple-text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- NAVBAR: pill mengambang ala macOS ---------- */
+    body .navbar {
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1120px, calc(100% - 28px));
+      height: auto;
+      padding: 10px 14px 10px 18px;
+      border-radius: 999px;
+      background: var(--apple-nav);
+      backdrop-filter: saturate(160%) blur(20px);
+      -webkit-backdrop-filter: saturate(160%) blur(20px);
+      border: 1px solid var(--apple-border);
+      box-shadow: var(--apple-shadow-sm);
+    }
+    body .school-logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    body .brand-text h1 {
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      background: none;
+      -webkit-text-fill-color: var(--apple-text);
+    }
+    body .brand-text p {
+      font-size: 0.65rem;
+      color: var(--apple-text-2);
+      font-weight: 500;
+    }
+    body .nav-link {
+      font-size: 0.85rem;
+      color: var(--apple-text-2);
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+    body .nav-link:hover {
+      color: var(--apple-text);
+      background: rgba(0, 0, 0, 0.05);
+    }
+    [data-theme="dark"] body .nav-link:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+    body .nav-link.active {
+      color: #fff;
+      background: var(--apple-accent);
+      box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35);
+    }
+    body .theme-toggle-btn {
+      width: 36px;
+      height: 36px;
+      background: var(--apple-card-solid);
+      border: 1px solid var(--apple-border);
+      box-shadow: var(--apple-shadow-sm);
+    }
+    body .user-badge {
+      background: var(--apple-card-solid);
+      color: var(--apple-text);
+      border: 1px solid var(--apple-border);
+      box-shadow: none;
+      font-size: 0.75rem;
+    }
+    body .btn-logout {
+      background: rgba(255, 59, 48, 0.12);
+      border: 1px solid rgba(255, 59, 48, 0.4);
+      color: var(--apple-red);
+    }
+    body .btn-logout:hover {
+      background: var(--apple-red);
+      border-color: var(--apple-red);
+    }
+
+    /* ---------- HERO ---------- */
+    body .hero-section {
+      padding-top: 130px;
+      background: transparent;
+      border-bottom: none;
+    }
+    body .hero-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(60% 50% at 15% 10%, rgba(0, 113, 227, 0.12), transparent 60%),
+        radial-gradient(50% 40% at 85% 20%, rgba(88, 86, 214, 0.1), transparent 60%);
+    }
+    body .hero-pill {
+      background: var(--apple-card);
+      border: 1px solid var(--apple-border);
+      color: var(--apple-text-2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font-weight: 600;
+    }
+    body .hero-title {
+      font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+      letter-spacing: -0.03em;
+      font-weight: 700;
+    }
+    body .hero-title span {
+      background: linear-gradient(100deg, var(--apple-accent), var(--apple-accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    body .hero-description {
+      color: var(--apple-text-2);
+      font-size: 1.05rem;
+      max-width: 560px;
+    }
+    body .today-banner-card {
+      background: var(--apple-card);
+      border: 1px solid var(--apple-border);
+      border-radius: var(--apple-radius-lg);
+      backdrop-filter: saturate(160%) blur(16px);
+      -webkit-backdrop-filter: saturate(160%) blur(16px);
+      box-shadow: var(--apple-shadow);
+      padding: 1.6rem;
+    }
+    /* Isi dinamis banner (dirender components.js) */
+    body .today-header h3 {
+      font-size: 1rem;
+    }
+    body .day-tag {
+      background: var(--apple-accent);
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    body .today-uniform-box {
+      background: rgba(0, 113, 227, 0.08);
+      border-left: 3px solid var(--apple-accent);
+      border-radius: 12px;
+    }
+    body .today-stats {
+      gap: 0.75rem;
+    }
+    body .stat-item {
+      background: var(--apple-card-solid);
+      border: 1px solid var(--apple-border);
+      border-radius: 16px;
+      box-shadow: var(--apple-shadow-sm);
+    }
+    body .stat-num {
+      color: var(--apple-text);
+      font-weight: 700;
+    }
+    body .stat-label {
+      color: var(--apple-text-2);
+    }
+
+    /* ---------- TOMBOL CTA HERO ---------- */
+    body .btn-login {
+      background: var(--apple-accent);
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(0, 113, 227, 0.3);
+    }
+    body .btn-login:hover {
+      filter: brightness(1.08);
+      transform: translateY(-2px);
+    }
+    body .day-tab-btn {
+      background: var(--apple-card);
+      border: 1px solid var(--apple-border);
+      border-radius: 999px;
+      color: var(--apple-text);
+      padding: 0.75rem 1.5rem;
+    }
+    body .day-tab-btn:hover {
+      background: var(--apple-card-solid);
+    }
+
+    /* ---------- SECTION & KARTU ---------- */
+    body .section-badge {
+      color: var(--apple-accent);
+      font-weight: 700;
+    }
+    body .section-title {
+      letter-spacing: -0.025em;
+      font-weight: 700;
+    }
+    body .section-desc {
+      color: var(--apple-text-2);
+    }
+    body .glass-box-center {
+      width: 100%;
+      max-width: 420px;
+      padding: 1.5rem;
+      background: var(--apple-card);
+      border: 1px solid var(--apple-border);
+      border-radius: var(--apple-radius);
+      backdrop-filter: saturate(160%) blur(16px);
+      -webkit-backdrop-filter: saturate(160%) blur(16px);
+      box-shadow: var(--apple-shadow);
+      transition: var(--transition);
+    }
+    body .glass-box-center:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.16);
+    }
+    [data-theme="dark"] body .glass-box-center:hover {
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5);
+    }
+    body .glass-box-center img {
+      border-radius: 18px;
+    }
+    body .glass-box-center h3 {
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    body .wali-container .glass-box-center {
+      max-width: 380px;
+    }
+    body .footer {
+      color: var(--apple-text-2);
+      border-top: 1px solid var(--apple-border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    /* ---------- MUSIC PLAYER: mini player ala iOS ---------- */
+    body .music-player-widget {
+      right: 24px;
+      bottom: 24px;
+      padding: 10px 12px;
+      background: var(--apple-nav);
+      border: 1px solid var(--apple-border);
+      border-radius: 999px;
+      backdrop-filter: saturate(160%) blur(20px);
+      -webkit-backdrop-filter: saturate(160%) blur(20px);
+      box-shadow: var(--apple-shadow);
+    }
+    body .music-disc {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--apple-accent), var(--apple-accent-2));
+      font-size: 1rem;
+    }
+    body .music-disc.playing {
+      animation: appleDiscSpin 3s linear infinite;
+    }
+    @keyframes appleDiscSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    body .music-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--apple-text);
+    }
+    body .music-sub {
+      font-size: 0.7rem;
+      color: var(--apple-text-2);
+    }
+    body .btn-music-toggle {
+      background: var(--apple-accent);
+      color: #fff;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 8px 16px;
+    }
+  </style>
 </head>
 <body>
 
