@@ -142,38 +142,6 @@
   line-height: 1.6;
 }
 
-/* --- ROLE SELECTOR --- */
-.role-selector-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 25px;
-}
-
-.role-card-opt {
-  padding: 18px;
-  border: 1.5px solid #f2f2f7;
-  background: #f9f9fb;
-  border-radius: 20px;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.4s var(--ease-lux);
-  font-size: 13px;
-  font-weight: 600;
-  color: #3a3a3c;
-}
-
-.role-card-opt:hover {
-  transform: translateY(-2px);
-  border-color: #d1d1d6;
-}
-.role-card-opt.selected {
-  background: rgba(0, 122, 255, 0.05);
-  border-color: var(--apple-blue);
-  color: var(--apple-blue);
-  box-shadow: 0 10px 20px rgba(0, 122, 255, 0.1);
-}
-
 /* --- FORMS --- */
 .form-group {
   margin-bottom: 20px;
@@ -255,10 +223,6 @@ label {
   }
 }
 
-.hidden {
-  display: none !important;
-}
-
 .theme-toggle-btn {
   position: absolute;
   top: 30px;
@@ -294,7 +258,7 @@ label {
           </div>
         </div>
 
-        <div class="badge-premium">Class X-RPB Portal v3.1</div>
+        <div class="badge-premium">SMK PGRI 3</div>
         
         <h1 class="hero-text">
           Crafting <span class="playfair italic text-blue-400">Code</span> Creating <span class="gold">Impact.</span>   X-RPB Jaya! 
@@ -311,40 +275,30 @@ label {
     <div class="login-side">
       <div class="login-box">
         <header class="login-header">
-          <h2>Portal Masuk</h2>
-          <p>Silakan pilih role kalian dan identitas Anda untuk mengakses sistem informasi internal kelas X-RPB.</p>
+          <h2>Log in Account</h2>
+          <p>Masukkan username dan password Anda untuk mengakses sistem informasi internal kelas X-RPB.</p>
         </header>
 
         <form id="landing-login-form">
           <div class="form-group">
-            <label>Pilih Hak Akses:</label>
-            <div class="role-selector-grid">
-              <div class="role-card-opt selected" data-role="siswa" onclick="APP.selectRole('siswa')">Siswa/Tamu</div>
-              <div class="role-card-opt" data-role="pengurus" onclick="APP.selectRole('pengurus')">Pengurus</div>
-              <div class="role-card-opt" data-role="walikelas" onclick="APP.selectRole('walikelas')">Wali Kelas</div>
-              <div class="role-card-opt" data-role="dev" onclick="APP.selectRole('dev')">Developer</div>
-            </div>
+            <label for="landing-username-input">Username:</label>
+            <input type="text" id="landing-username-input" class="form-control" placeholder="Nama atau nickname Anda..." required autocomplete="username">
           </div>
 
-          <div class="form-group-input">
-            <label for="landing-name-input">Identitas Pengguna:</label>
-            <input type="text" id="landing-name-input" class="form-control" placeholder="Masukkan nama atau nickname..." required autocomplete="off">
-          </div>
-
-          <div id="landing-pass-group" class="hidden">
-            <div class="form-group">
-              <label for="landing-pass-input">Akses PIN:</label>
-              <input type="password" id="landing-pass-input" class="form-control" placeholder="••••••">
-            </div>
+          <div class="form-group">
+            <label for="landing-pass-input">Password (PIN Akses):</label>
+            <input type="password" id="landing-pass-input" class="form-control" placeholder="(kosongkan jika Siswa)">
           </div>
 
           <button type="submit" class="btn-login">
-             Masuk ke Portal
+            Log in 
           </button>
         </form>
 
-        <div class="mt-12 pt-8 border-t border-gray-100 text-center">
-            <p class="text-[10px] uppercase tracking-[3px] text-gray-300 font-bold">Constributed By Lee, Muffiyan, Remon, Manggala Putra.</p>
+        <div class="mt-10 pt-6 border-t border-gray-100 text-center">
+          <p class="text-[10px] uppercase tracking-[2px] text-gray-400 font-bold">Log in untuk masuk ke dashboard</p>
+          <p class="text-[10px] text-gray-400 mt-1">Siswa: cukup isi username, password dikosongkan</p>
+          <p class="text-[10px] uppercase tracking-[3px] text-gray-300 font-bold mt-3">Project Bersama.</p>
         </div>
       </div>
     </div>
@@ -356,8 +310,5 @@ label {
   <script src="js/auth.js"></script>
   <script src="js/components.js"></script>
   <script src="js/app.js"></script>
-  
-  <script src="js/auth.js"></script>
-  </script>
 </body>
 </html>

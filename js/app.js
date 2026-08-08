@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const APP = {
-  selectedRole: "siswa",
   isMusicPlaying: false,
 
   init() {
@@ -42,28 +41,6 @@ const APP = {
     });
   },
 
-  selectRole(roleKey) {
-    this.selectedRole = roleKey;
-    document.querySelectorAll(".role-card-opt").forEach(card => {
-      if (card.dataset.role === roleKey) {
-        card.classList.add("selected");
-      } else {
-        card.classList.remove("selected");
-      }
-    });
-
-    const passGroup = document.getElementById("landing-pass-group");
-    const nameInput = document.getElementById("landing-name-input");
-
-    if (roleKey === "siswa") {
-      if (passGroup) passGroup.style.display = "none";
-      if (nameInput) nameInput.placeholder = "Masukkan nama Anda (Opsional)...";
-    } else {
-      if (passGroup) passGroup.style.display = "flex";
-      if (nameInput) nameInput.placeholder = "Nama lengkap Anda...";
-    }
-  },
-
   bindEvents() {
     // Theme Switchers
     document.querySelectorAll(".theme-toggle-btn").forEach(btn => {
@@ -75,11 +52,10 @@ const APP = {
     if (loginLandingForm) {
       loginLandingForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const role = this.selectedRole;
-        const name = document.getElementById("landing-name-input").value;
+        const username = document.getElementById("landing-username-input").value;
         const pass = document.getElementById("landing-pass-input") ? document.getElementById("landing-pass-input").value : "";
 
-        const result = AUTH.login(role, name, pass);
+        const result = AUTH.login(username, pass);
         if (result.success) {
           alert(`Selamat Datang, ${result.user.badge} ${result.user.name}! Membuka Beranda Kelas...`);
           window.location.href = "beranda.html";

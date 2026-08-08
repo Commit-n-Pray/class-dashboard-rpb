@@ -30,24 +30,26 @@ const AUTH = {
     return null;
   },
 
-  login(roleKey, name, passInput) {
-    const config = this.ROLES_CONFIG[roleKey];
-    if (!config) return { success: false, message: "Role tidak valid!" };
+  login(username, passInput) {
+    const name = (username || "").trim();
 
-    if (config.pass && passInput !== config.pass) {
-      return { success: false, message: `Password/PIN salah untuk ${config.name}! (Hint PIN: ${config.pass})` };
+    // Role tetap tersimpan — ditentukan otomatis dari password/PIN yang dimasukkan
+    for (const [roleKey, config] of Object.entries(this.ROLES_CONFIG)) {
+      if ((config.pass || "") === (passInput || "")) {
+        const userData = {
+          role: roleKey,
+          name: name || config.name,
+          badge: config.badge,
+          canEdit: config.canEdit,
+          loginTime: new Date().toISOString()
+        };
+
+        localStorage.setItem(this.CURRENT_USER_KEY, JSON.stringify(userData));
+        return { success: true, user: userData };
+      }
     }
 
-    const userData = {
-      role: roleKey,
-      name: name || config.name,
-      badge: config.badge,
-      canEdit: config.canEdit,
-      loginTime: new Date().toISOString()
-    };
-
-    localStorage.setItem(this.CURRENT_USER_KEY, JSON.stringify(userData));
-    return { success: true, user: userData };
+    return { success: false, message: "Password/PIN salah! (Pengurus: 1234 · Wali Kelas: guru123 · Dev: dev123 · Siswa: tanpa password)" };
   },
 
   logout() {
@@ -91,20 +93,3 @@ const AUTH = {
     }
   }
 };
-
-// Local UI Logic
-    const roleCards = document.querySelectorAll('.role-card-opt');
-    roleCards.forEach(card => {
-      card.addEventListener('click', () => {
-        roleCards.forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-        
-        const role = card.getAttribute('data-role');
-        const passGroup = document.getElementById('landing-pass-group');
-        if (role !== 'siswa') {
-          passGroup.classList.remove('hidden');
-        } else {
-          passGroup.classList.add('hidden');
-        }
-      });
-    });

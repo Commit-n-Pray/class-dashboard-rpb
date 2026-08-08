@@ -51,6 +51,11 @@ const RENDERER = {
     const bannerEl = document.getElementById("hero-today-banner");
     if (!bannerEl) return;
 
+    // Guard: sebagian data (members/tasks/finance) boleh kosong dulu
+    const members = CLASS_DATA.members || [];
+    const tasks = CLASS_DATA.initialTasks || [];
+    const balance = (CLASS_DATA.finance && CLASS_DATA.finance.currentBalance) || 0;
+
     const todaySched = CLASS_DATA.schedules.find(s => s.day === this.activeDay) || CLASS_DATA.schedules[0];
 
     bannerEl.innerHTML = `
@@ -75,15 +80,15 @@ const RENDERER = {
       </div>
       <div class="today-stats">
         <div class="stat-item">
-          <div class="stat-num">${CLASS_DATA.members.length}</div>
+          <div class="stat-num">${members.length}</div>
           <div class="stat-label">Siswa & Wali</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">${CLASS_DATA.initialTasks.filter(t => t.status !== 'Selesai').length}</div>
+          <div class="stat-num">${tasks.filter(t => t.status !== 'Selesai').length}</div>
           <div class="stat-label">Tugas Pending</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">Rp ${(CLASS_DATA.finance.currentBalance / 1000).toLocaleString('id-ID')}k</div>
+          <div class="stat-num">${balance > 0 ? `Rp ${Math.round(balance / 1000).toLocaleString('id-ID')}k` : 'Rp 0'}</div>
           <div class="stat-label">Kas Kelas</div>
         </div>
       </div>
