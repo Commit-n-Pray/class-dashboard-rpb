@@ -1,103 +1,106 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
 
-/* --- 1. CSS VARIABLES FOR TEMA --- */
+/* ============================================================
+   X-RPB SKARIGA — STYLESHEET PORTAL KELAS
+   Versi bersih: satu sumber tema, tanpa duplikasi.
+   Catatan penting:
+   - Animasi pageLoad TIDAK memakai transform (biar elemen
+     position:fixed seperti navbar tidak "melompat" saat pindah
+     halaman).
+   - Logo SMK PGRI di banner beranda tidak pernah disembunyikan.
+   ============================================================ */
+
+/* ---------- 1. TEMA (satu sumber) ---------- */
 :root {
-  /* Dark Mode Default */
-  --bg-main: #121212;
-  --bg-card: rgba(22, 28, 45, 0.75);
-  --bg-card-solid: #161c2d;
-  --bg-card-hover: rgba(30, 39, 62, 0.85);
-  --bg-nav: rgba(11, 15, 25, 0.85);
-  --bg-input: #1a2236;
+  /* Palet ala Apple (default = mode terang) */
+  --apple-bg: #f5f5f7;
+  --apple-nav: rgba(255, 255, 255, 0.72);
+  --apple-card: rgba(255, 255, 255, 0.6);
+  --apple-card-solid: rgba(255, 255, 255, 0.92);
+  --apple-border: rgba(0, 0, 0, 0.08);
+  --apple-text: #1d1d1f;
+  --apple-text-2: #6e6e73;
+  --apple-accent: #0071e3;
+  --apple-accent-2: #5856d6;
+  --apple-red: #ff3b30;
+  --apple-shadow: 0 18px 50px rgba(0, 0, 0, 0.1);
+  --apple-shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.08);
+  --apple-radius: 26px;
+  --apple-radius-lg: 34px;
+  --apple-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
 
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(99, 102, 241, 0.4);
-
-  --text-main: #f3f4f6;
-  --text-muted: #9ca3af;
-  --text-inverse: #0f172a;
-
-  --accent-primary: #0059ff;
-  --accent-secondary: #0059ff;
-  --accent-cyan: #0059ff;
-  --accent-emerald: #0059ff;
-  --accent-amber: #f59e0b;
-
-  --gradient-hero: linear-gradient(
-    135deg,
-    rgba(99, 102, 241, 0.15) 0%,
-    rgba(6, 44, 197, 0.15) 50%,
-    rgba(6, 61, 212, 0.15) 100%
-  );
-  --gradient-badge: linear-gradient(135deg, #0059ff, #0059ff);
-  --gradient-btn: linear-gradient(135deg, #0059ff, #0059ff);
-  --gradient-btn-hover: linear-gradient(135deg, #0059ff, #0059ff);
-
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.35);
-  --shadow-glow: 0 0 20px rgba(0, 157, 255, 0.35);
-
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  /* Variabel lama yang dipakai template dinamis (components.js) */
+  --bg-card: rgba(255, 255, 255, 0.6);
+  --bg-card-solid: rgba(255, 255, 255, 0.92);
+  --bg-input: rgba(0, 0, 0, 0.05);
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-glow: rgba(0, 113, 227, 0.25);
+  --text-main: #1d1d1f;
+  --text-muted: #6e6e73;
+  --accent-primary: #0071e3;
+  --accent-secondary: #5856d6;
+  --accent-cyan: #0071e3;
+  --accent-emerald: #34c759;
+  --accent-amber: #ff9500;
+  --gradient-hero: linear-gradient(135deg, rgba(0, 113, 227, 0.09), rgba(88, 86, 214, 0.09));
+  --gradient-badge: linear-gradient(135deg, #0071e3, #5856d6);
+  --gradient-btn: linear-gradient(135deg, #0071e3, #5856d6);
+  --gradient-btn-hover: linear-gradient(135deg, #0a84ff, #5e5ce6);
+  --shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 18px 50px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 10px 40px rgba(0, 113, 227, 0.25);
+  --radius-sm: 14px;
+  --radius-md: 22px;
+  --radius-lg: 28px;
   --radius-full: 9999px;
-
   --backdrop-blur: blur(16px);
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.35s var(--apple-ease);
+
 }
 
-/* Light Mode Override */
-[data-theme="light"] {
-  --bg-main: #f8fafc;
-  --bg-card: rgba(39, 35, 36, 0.111);
-  --bg-card-solid: #ffffff;
-  --bg-card-hover: #ffffff;
-  --bg-nav: rgba(248, 250, 252, 0.9);
-  --bg-input: #f1f5f9;
+[data-theme="dark"] {
+  --apple-bg: #121212;
+  --apple-nav: rgba(22, 22, 24, 0.7);
+  --apple-card: rgba(30, 30, 32, 0.55);
+  --apple-card-solid: rgba(44, 44, 46, 0.78);
+  --apple-border: rgba(255, 255, 255, 0.12);
+  --apple-text: #f5f5f7;
+  --apple-text-2: #a1a1a6;
+  --apple-accent: #2997ff;
+  --apple-accent-2: #bf5af2;
+  --apple-red: #ff453a;
+  --apple-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --apple-shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.3);
 
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(99, 102, 241, 0.4);
-
-  --text-main: #1e293b;
-  --text-muted: #000000;
-  --text-inverse: #0f172a;
-
-  --accent-primary: #0059ff;
-  --accent-secondary: #0059ff;
-  --accent-cyan: #0059ff;
-  --accent-emerald: #0059ff;
-  --accent-amber: #f59e0b;
-
-  --gradient-hero: linear-gradient(
-    135deg,
-    rgba(99, 102, 241, 0.15) 0%,
-    rgba(6, 44, 197, 0.15) 50%,
-    rgba(6, 61, 212, 0.15) 100%
-  );
-  --gradient-badge: linear-gradient(135deg, #0059ff, #0059ff);
-  --gradient-btn: linear-gradient(135deg, #0059ff, #0059ff);
-  --gradient-btn-hover: linear-gradient(135deg, #0059ff, #0059ff);
-
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.35);
-  --shadow-glow: 0 0 20px rgba(0, 157, 255, 0.35);
-
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-full: 9999px;
-
-  --backdrop-blur: blur(16px);
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --bg-card: rgba(30, 30, 32, 0.55);
+  --bg-card-solid: rgba(44, 44, 46, 0.78);
+  --bg-input: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-glow: rgba(41, 151, 255, 0.35);
+  --text-main: #f5f5f7;
+  --text-muted: #a1a1a6;
+  --accent-primary: #2997ff;
+  --accent-secondary: #bf5af2;
+  --accent-cyan: #64d2ff;
+  --accent-emerald: #30d158;
+  --accent-amber: #ff9f0a;
+  --gradient-hero: linear-gradient(135deg, rgba(41, 151, 255, 0.12), rgba(191, 90, 242, 0.1));
+  --gradient-badge: linear-gradient(135deg, #2997ff, #bf5af2);
+  --gradient-btn: linear-gradient(135deg, #2997ff, #bf5af2);
+  --gradient-btn-hover: linear-gradient(135deg, #64d2ff, #bf5af2);
+  --shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 10px 40px rgba(41, 151, 255, 0.35);
 }
 
-/* --- 2. BASE STYLES & RESET --- */
+/* ---------- 2. RESET & DASAR ---------- */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -110,14 +113,31 @@ html {
 }
 
 body {
-  background-color: var(--bg-main);
-  color: var(--text-main);
+  background-color: var(--apple-bg);
+  /* Nuansa radial lembut khas tema gelap (sama seperti desain awal) */
+  background-image: radial-gradient(circle at top right, rgba(0, 122, 255, 0.05), transparent 40%);
+  color: var(--apple-text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Plus Jakarta Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.6;
-  min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
   transition:
     background-color 0.4s ease,
     color 0.4s ease;
+  /* Hanya fade opacity — tanpa transform supaya elemen
+     position:fixed (navbar) tidak bergeser saat halaman dimuat. */
+  animation: pageLoad 0.8s ease;
+}
+
+@keyframes pageLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 a {
@@ -140,361 +160,26 @@ textarea {
   color: inherit;
 }
 
-/* navbar Dari Beranda sampai galery  */
-/* ---------- VARIABEL TEMA ALA APPLE ---------- */
-    :root {
-      --apple-bg: #f5f5f7;
-      --apple-nav: rgba(255, 255, 255, 0.72);
-      --apple-card: rgba(255, 255, 255, 0.6);
-      --apple-card-solid: rgba(255, 255, 255, 0.92);
-      --apple-border: rgba(0, 0, 0, 0.08);
-      --apple-text: #1d1d1f;
-      --apple-text-2: #6e6e73;
-      --apple-accent: #0071e3;
-      --apple-accent-2: #5856d6;
-      --apple-red: #ff3b30;
-      --apple-shadow: 0 18px 50px rgba(0, 0, 0, 0.1);
-      --apple-shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.08);
-      --apple-radius: 26px;
-      --apple-radius-lg: 34px;
-      --apple-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
-
-      /* Sinkronkan variabel lama yang dipakai template dinamis (components.js) */
-      --text-main: #1d1d1f;
-      --text-muted: #6e6e73;
-      --text-inverse: #f5f5f7;
-      --bg-card-solid: rgba(255, 255, 255, 0.92);
-      --bg-input: rgba(0, 0, 0, 0.05);
-      --accent-primary: #0071e3;
-      --accent-secondary: #5856d6;
-      --accent-cyan: #0071e3;
-      --accent-emerald: #34c759;
-      --radius-sm: 14px;
-      --radius-md: 22px;
-      --transition: all 0.35s var(--apple-ease);
-      --shadow-glow: 0 10px 40px rgba(0, 113, 227, 0.25);
-    }
-
-    [data-theme="dark"] {
-      --apple-bg: #000;
-      --apple-nav: rgba(22, 22, 24, 0.7);
-      --apple-card: rgba(30, 30, 32, 0.55);
-      --apple-card-solid: rgba(44, 44, 46, 0.78);
-      --apple-border: rgba(255, 255, 255, 0.12);
-      --apple-text: #f5f5f7;
-      --apple-text-2: #a1a1a6;
-      --apple-accent: #2997ff;
-      --apple-accent-2: #bf5af2;
-      --apple-red: #ff453a;
-      --apple-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-      --apple-shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.3);
-
-      --text-main: #f5f5f7;
-      --text-muted: #a1a1a6;
-      --text-inverse: #000;
-      --bg-card-solid: rgba(44, 44, 46, 0.78);
-      --bg-input: rgba(255, 255, 255, 0.08);
-      --accent-primary: #2997ff;
-      --accent-secondary: #bf5af2;
-      --accent-cyan: #64d2ff;
-      --accent-emerald: #30d158;
-      --shadow-glow: 0 10px 40px rgba(41, 151, 255, 0.35);
-    }
-
-    body {
-      background-color: var(--apple-bg);
-      color: var(--apple-text);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ---------- NAVBAR: pill mengambang ala macOS ---------- */
-    body .navbar {
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(1320px, calc(100% - 28px));
-      height: auto;
-      padding: 10px 14px 10px 18px;
-      border-radius: 999px;
-      background: var(--apple-nav);
-      backdrop-filter: saturate(160%) blur(20px);
-      -webkit-backdrop-filter: saturate(160%) blur(20px);
-      border: 1px solid var(--apple-border);
-      box-shadow: var(--apple-shadow-sm);
-    }
-    body .school-logo {
-      width: 38px;
-      height: 38px;
-      border-radius: 11px;
-      border: none;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    }
-    body .brand-text h1 {
-      font-size: 1.05rem;
-      letter-spacing: -0.02em;
-      font-weight: 700;
-      background: none;
-      -webkit-text-fill-color: var(--apple-text);
-    }
-    body .brand-text p {
-      font-size: 0.65rem;
-      color: var(--apple-text-2);
-      font-weight: 500;
-    }
-    body .nav-link {
-      font-size: 0.85rem;
-      color: var(--apple-text-2);
-      font-weight: 500;
-      padding: 6px 14px;
-      border-radius: 999px;
-    }
-    body .nav-link:hover {
-      color: var(--apple-text);
-      background: rgba(0, 0, 0, 0.05);
-    }
-    [data-theme="dark"] body .nav-link:hover {
-      background: rgba(255, 255, 255, 0.08);
-    }
-    body .nav-link.active {
-      color: #fff;
-      background: var(--apple-accent);
-      box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35);
-    }
-    body .theme-toggle-btn {
-      width: 36px;
-      height: 36px;
-      background: var(--apple-card-solid);
-      border: 1px solid var(--apple-border);
-      box-shadow: var(--apple-shadow-sm);
-    }
-    body .user-badge {
-      background: var(--apple-card-solid);
-      color: var(--apple-text);
-      border: 1px solid var(--apple-border);
-      box-shadow: none;
-      font-size: 0.75rem;
-    }
-    body .btn-logout {
-      background: rgba(255, 59, 48, 0.12);
-      border: 1px solid rgba(255, 59, 48, 0.4);
-      color: var(--apple-red);
-    }
-    body .btn-logout:hover {
-      background: var(--apple-red);
-      border-color: var(--apple-red);
-    }
-
-    /* ---------- HERO ---------- */
-    body .hero-section {
-      padding-top: 130px;
-      background: transparent;
-      border-bottom: none;
-    }
-    body .hero-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(60% 50% at 15% 10%, rgba(0, 113, 227, 0.12), transparent 60%),
-        radial-gradient(50% 40% at 85% 20%, rgba(88, 86, 214, 0.1), transparent 60%);
-    }
-    body .hero-pill {
-      background: var(--apple-card);
-      border: 1px solid var(--apple-border);
-      color: var(--apple-text-2);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      font-weight: 600;
-    }
-    body .hero-title {
-      font-size: clamp(2.4rem, 4.6vw, 3.8rem);
-      letter-spacing: -0.03em;
-      font-weight: 700;
-    }
-    body .hero-title span {
-      background: linear-gradient(100deg, var(--apple-accent), var(--apple-accent-2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    body .hero-description {
-      color: var(--apple-text-2);
-      font-size: 1.05rem;
-      max-width: 560px;
-    }
-    body .today-banner-card {
-      background: var(--apple-card);
-      border: 1px solid var(--apple-border);
-      border-radius: var(--apple-radius-lg);
-      backdrop-filter: saturate(160%) blur(16px);
-      -webkit-backdrop-filter: saturate(160%) blur(16px);
-      box-shadow: var(--apple-shadow);
-      padding: 1.6rem;
-    }
-    /* Isi dinamis banner (dirender components.js) */
-    body .today-header h3 {
-      font-size: 1rem;
-    }
-    body .day-tag {
-      background: var(--apple-accent);
-      border-radius: 999px;
-      font-weight: 600;
-    }
-    body .today-uniform-box {
-      background: rgba(0, 113, 227, 0.08);
-      border-left: 3px solid var(--apple-accent);
-      border-radius: 12px;
-    }
-    body .today-stats {
-      gap: 0.75rem;
-    }
-    body .stat-item {
-      background: var(--apple-card-solid);
-      border: 1px solid var(--apple-border);
-      border-radius: 16px;
-      box-shadow: var(--apple-shadow-sm);
-    }
-    body .stat-num {
-      color: var(--apple-text);
-      font-weight: 700;
-    }
-    body .stat-label {
-      color: var(--apple-text-2);
-    }
-
-    /* ---------- TOMBOL CTA HERO ---------- */
-    body .btn-login {
-      background: var(--apple-accent);
-      border-radius: 999px;
-      box-shadow: 0 8px 20px rgba(0, 113, 227, 0.3);
-    }
-    body .btn-login:hover {
-      filter: brightness(1.08);
-      transform: translateY(-2px);
-    }
-    body .day-tab-btn {
-      background: var(--apple-card);
-      border: 1px solid var(--apple-border);
-      border-radius: 999px;
-      color: var(--apple-text);
-      padding: 0.75rem 1.5rem;
-    }
-    body .day-tab-btn:hover {
-      background: var(--apple-card-solid);
-    }
-
-    /* ---------- SECTION & KARTU ---------- */
-    body .section-badge {
-      color: var(--apple-accent);
-      font-weight: 700;
-    }
-    body .section-title {
-      letter-spacing: -0.025em;
-      font-weight: 700;
-    }
-    body .section-desc {
-      color: var(--apple-text-2);
-    }
-    body .glass-box-center {
-      width: 100%;
-      max-width: 420px;
-      padding: 1.5rem;
-      background: var(--apple-card);
-      border: 1px solid var(--apple-border);
-      border-radius: var(--apple-radius);
-      backdrop-filter: saturate(160%) blur(16px);
-      -webkit-backdrop-filter: saturate(160%) blur(16px);
-      box-shadow: var(--apple-shadow);
-      transition: var(--transition);
-    }
-    body .glass-box-center:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.16);
-    }
-    [data-theme="dark"] body .glass-box-center:hover {
-      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5);
-    }
-    body .glass-box-center img {
-      border-radius: 18px;
-    }
-    body .glass-box-center h3 {
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-    body .wali-container .glass-box-center {
-      max-width: 380px;
-    }
-    body .footer {
-      color: var(--apple-text-2);
-      border-top: 1px solid var(--apple-border);
-      padding: 2rem 1.5rem;
-      text-align: center;
-      font-size: 0.8rem;
-    }
-
-    /* ---------- MUSIC PLAYER: mini player ala iOS ---------- */
-    body .music-player-widget {
-      right: 24px;
-      bottom: 24px;
-      padding: 10px 12px;
-      background: var(--apple-nav);
-      border: 1px solid var(--apple-border);
-      border-radius: 999px;
-      backdrop-filter: saturate(160%) blur(20px);
-      -webkit-backdrop-filter: saturate(160%) blur(20px);
-      box-shadow: var(--apple-shadow);
-    }
-    body .music-disc {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--apple-accent), var(--apple-accent-2));
-      font-size: 1rem;
-    }
-    body .music-disc.playing {
-      animation: appleDiscSpin 3s linear infinite;
-    }
-    @keyframes appleDiscSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    body .music-title {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--apple-text);
-    }
-    body .music-sub {
-      font-size: 0.7rem;
-      color: var(--apple-text-2);
-    }
-    body .btn-music-toggle {
-      background: var(--apple-accent);
-      color: #fff;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 8px 16px;
-    }
-
-
-/* --- 4. NAVBAR STYLES --- */
+/* ---------- 3. NAVBAR (pill mengambang ala macOS) ---------- */
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 75px;
-  background: var(--bg-nav);
-  backdrop-filter: var(--backdrop-blur);
-  -webkit-backdrop-filter: var(--backdrop-blur);
-  border-bottom: 1px solid var(--border-color);
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1320px, calc(100% - 28px));
+  height: auto;
+  padding: 10px 14px 10px 18px;
+  border-radius: 999px;
+  background: var(--apple-nav);
+  backdrop-filter: saturate(160%) blur(20px);
+  -webkit-backdrop-filter: saturate(160%) blur(20px);
+  border: 1px solid var(--apple-border);
+  box-shadow: var(--apple-shadow-sm);
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.5rem;
+  gap: 1rem;
   transition: var(--transition);
 }
 
@@ -505,30 +190,25 @@ textarea {
 }
 
 .school-logo {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
   object-fit: cover;
-  border: 2px solid var(--accent-primary);
-  box-shadow: var(--shadow-glow);
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .brand-text h1 {
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-size: 1.05rem;
   letter-spacing: -0.02em;
-  background: linear-gradient(
-    135deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  background: none;
+  -webkit-text-fill-color: var(--apple-text);
 }
 
 .brand-text p {
-  font-size: 0.75rem;
-  color: var(--text-muted);
+  font-size: 0.65rem;
+  color: var(--apple-text-2);
   font-weight: 500;
 }
 
@@ -540,18 +220,35 @@ textarea {
 }
 
 .nav-link {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  padding: 0.5rem 0.85rem;
-  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--apple-text-2);
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 999px;
   transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.nav-link:hover,
+.nav-link:hover {
+  color: var(--apple-text);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .nav-link.active {
-  color: var(--text-main);
-  background: rgba(99, 102, 241, 0.1);
+  color: #fff;
+  background: var(--apple-accent);
+  box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35);
+}
+
+/* Ikon nav: hanya tampil pada bottom nav mobile */
+.nav-icon {
+  display: none;
 }
 
 .nav-actions {
@@ -561,11 +258,12 @@ textarea {
 }
 
 .theme-toggle-btn {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-full);
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background: var(--apple-card-solid);
+  border: 1px solid var(--apple-border);
+  box-shadow: var(--apple-shadow-sm);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -575,54 +273,66 @@ textarea {
 
 .theme-toggle-btn:hover {
   transform: rotate(20deg) scale(1.08);
-  border-color: var(--accent-primary);
+  border-color: var(--apple-accent);
 }
 
 .user-badge {
   padding: 0.4rem 0.85rem;
   border-radius: var(--radius-full);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  background: var(--gradient-badge);
-  color: #ffffff;
-  box-shadow: var(--shadow-sm);
+  background: var(--apple-card-solid);
+  color: var(--apple-text);
+  border: 1px solid var(--apple-border);
+  box-shadow: none;
 }
 
 .btn-login {
   padding: 0.55rem 1.25rem;
   border-radius: var(--radius-full);
-  background: var(--gradient-btn);
-  color: #ffffff;
+  background: var(--apple-accent);
+  color: #fff;
   font-size: 0.85rem;
   font-weight: 700;
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 8px 20px rgba(0, 113, 227, 0.3);
   transition: var(--transition);
 }
 
 .btn-login:hover {
-  background: var(--gradient-btn-hover);
+  filter: brightness(1.08);
   transform: translateY(-2px);
 }
 
 .btn-logout {
-  background: rgba(239, 68, 68, 0.2);
-  border: 1px solid #ef4444;
-  color: #ef4444;
+  background: rgba(255, 59, 48, 0.12);
+  border: 1px solid rgba(255, 59, 48, 0.4);
+  color: var(--apple-red);
 }
 
 .btn-logout:hover {
-  background: #ef4444;
+  background: var(--apple-red);
+  border-color: var(--apple-red);
   color: #fff;
 }
 
-/* --- 5. HERO ENTRANCE SECTION Halaman masuk --- */
+/* ---------- 4. HERO (Halaman Beranda) ---------- */
 .hero-section {
-  padding-top: 120px;
+  padding-top: 130px;
   padding-bottom: 60px;
   position: relative;
   overflow: hidden;
-  background: var(--gradient-hero);
-  border-bottom: 1px solid var(--border-color);
+  background: transparent;
+  border-bottom: none;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 50% at 15% 10%, rgba(0, 113, 227, 0.12), transparent 60%),
+    radial-gradient(50% 40% at 85% 20%, rgba(88, 86, 214, 0.1), transparent 60%);
 }
 
 .hero-container {
@@ -647,48 +357,77 @@ textarea {
   gap: 0.5rem;
   padding: 0.4rem 1rem;
   border-radius: var(--radius-full);
-  background: rgba(99, 102, 241, 0.12);
-  border: 1px solid var(--border-glow);
+  background: var(--apple-card);
+  border: 1px solid var(--apple-border);
   font-size: 0.825rem;
-  font-weight: 700;
-  color: var(--accent-primary);
+  font-weight: 600;
+  color: var(--apple-text-2);
   width: fit-content;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .hero-title {
-  font-size: 3rem;
-  font-weight: 800;
+  font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.03em;
 }
 
 .hero-title span {
-  background: linear-gradient(
-    135deg,
-    var(--accent-primary),
-    var(--accent-secondary),
-    var(--accent-cyan)
-  );
+  background: linear-gradient(100deg, var(--apple-accent), var(--apple-accent-2));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .hero-description {
   font-size: 1.05rem;
-  color: var(--text-muted);
-  max-width: 580px;
+  color: var(--apple-text-2);
+  max-width: 560px;
 }
 
+/* Banner jadwal hari ini — logo SMK PGRI SELALU tampil,
+   konten dinamis dirender di bawahnya (components.js) */
 .today-banner-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1.5rem;
-  backdrop-filter: var(--backdrop-blur);
-  box-shadow: var(--shadow-md);
+  background: var(--apple-card);
+  border: 1px solid var(--apple-border);
+  border-radius: var(--apple-radius-lg);
+  padding: 1.6rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  backdrop-filter: saturate(160%) blur(16px);
+  -webkit-backdrop-filter: saturate(160%) blur(16px);
+  box-shadow: var(--apple-shadow);
+}
+
+.banner-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Konten dinamis jadwal hari ini (sembunyi jika kosong) */
+#hero-today-banner:empty {
+  display: none;
+}
+
+/* Daftar mapel dibatasi tingginya agar banner tetap ringkas */
+#hero-today-banner ul {
+  max-height: 170px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+#hero-today-banner ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+#hero-today-banner ul::-webkit-scrollbar-thumb {
+  background: var(--apple-border);
+  border-radius: 999px;
 }
 
 .today-header {
@@ -706,26 +445,26 @@ textarea {
 }
 
 .day-tag {
-  background: var(--accent-primary);
+  background: var(--apple-accent);
   color: #fff;
   padding: 0.2rem 0.7rem;
   border-radius: var(--radius-full);
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .today-uniform-box {
-  background: rgba(99, 102, 241, 0.08);
-  border-left: 4px solid var(--accent-primary);
+  background: rgba(0, 113, 227, 0.08);
+  border-left: 3px solid var(--apple-accent);
   padding: 0.75rem 1rem;
-  border-radius: var(--radius-sm);
+  border-radius: 12px;
   font-size: 0.875rem;
 }
 
 .today-uniform-box strong {
   display: block;
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: var(--apple-text-2);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -733,29 +472,30 @@ textarea {
 .today-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .stat-item {
-  background: var(--bg-card-solid);
+  background: var(--apple-card-solid);
   padding: 0.85rem;
-  border-radius: var(--radius-sm);
+  border-radius: 16px;
   text-align: center;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--apple-border);
+  box-shadow: var(--apple-shadow-sm);
 }
 
 .stat-num {
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--accent-primary);
+  color: var(--apple-text);
 }
 
 .stat-label {
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: var(--apple-text-2);
 }
 
-/* --- 6. MAIN CONTAINER & SECTIONS --- */
+/* ---------- 5. LAYOUT UTAMA & SECTION HEADER ---------- */
 .main-wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -765,7 +505,6 @@ textarea {
   gap: 4rem;
 }
 
-/* Wali Kelas */
 .wali-container {
   display: flex;
   justify-content: center;
@@ -784,25 +523,131 @@ textarea {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--accent-primary);
+  color: var(--apple-accent);
 }
 
 .section-title {
   font-size: 1.85rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .section-desc {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: var(--apple-text-2);
 }
 
-/* --- 7. JADWAL & SERAGAM TAB SYSTEM --- */
+.section-note {
+  font-size: 0.85rem;
+  color: var(--apple-text-2);
+  margin-top: 0.25rem;
+}
+
+/* ---------- 6. JADWAL & SERAGAM ---------- */
 .schedule-container {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+/* Grid statis 5 hari (desain asli, tanpa Tailwind) */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .schedule-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .schedule-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-radius: 28px;
+  transition: all 0.5s var(--apple-ease);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.day-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.day-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.day-card-subjects {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.day-indicator {
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--radius-full);
+  border: 1px solid currentColor;
+  opacity: 0.2;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.active-day {
+  border-color: var(--accent-primary) !important;
+  background: rgba(0, 122, 255, 0.08) !important;
+  box-shadow: 0 0 40px rgba(0, 122, 255, 0.1);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+.active-day .day-indicator {
+  background: var(--accent-primary) !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.subject-badge {
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 14px;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.3s;
+}
+
+.subject-badge:hover {
+  background: var(--apple-card-solid);
+  transform: translateY(-1px);
+}
+
+.subject-badge svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
 }
 
 .day-tabs {
@@ -814,21 +659,24 @@ textarea {
 
 .day-tab-btn {
   padding: 0.65rem 1.25rem;
-  border-radius: var(--radius-md);
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  background: var(--apple-card);
+  border: 1px solid var(--apple-border);
   font-size: 0.9rem;
   font-weight: 700;
-  color: var(--text-muted);
+  color: var(--apple-text);
   white-space: nowrap;
   transition: var(--transition);
 }
 
-.day-tab-btn:hover,
+.day-tab-btn:hover {
+  background: var(--apple-card-solid);
+}
+
 .day-tab-btn.active {
   color: #fff;
-  background: var(--accent-primary);
-  border-color: var(--accent-primary);
+  background: var(--apple-accent);
+  border-color: var(--apple-accent);
   box-shadow: var(--shadow-glow);
 }
 
@@ -876,19 +724,19 @@ textarea {
   left: 0;
   width: 4px;
   height: 100%;
-  background: var(--accent-primary);
+  background: var(--apple-accent);
 }
 
 .subject-card:hover {
   transform: translateY(-4px);
-  border-color: var(--accent-primary);
+  border-color: var(--apple-accent);
   box-shadow: var(--shadow-md);
 }
 
 .subject-time {
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--accent-cyan);
+  color: var(--apple-accent);
   margin-bottom: 0.4rem;
 }
 
@@ -906,7 +754,7 @@ textarea {
   gap: 0.2rem;
 }
 
-/* --- 8. TASK REMINDER SECTION TUGAS PENGINGAT --- */
+/* ---------- 7. PENGINGAT TUGAS ---------- */
 .tasks-control-bar {
   display: flex;
   align-items: center;
@@ -930,13 +778,14 @@ textarea {
   font-weight: 600;
   color: var(--text-muted);
   transition: var(--transition);
+  white-space: nowrap;
 }
 
 .filter-chip.active,
 .filter-chip:hover {
-  background: var(--accent-primary);
+  background: var(--apple-accent);
   color: #fff;
-  border-color: var(--accent-primary);
+  border-color: var(--apple-accent);
 }
 
 .btn-add-task {
@@ -987,7 +836,7 @@ textarea {
   padding: 0.25rem 0.6rem;
   border-radius: var(--radius-sm);
   background: rgba(99, 102, 241, 0.15);
-  color: var(--accent-primary);
+  color: var(--apple-accent);
 }
 
 .priority-tag {
@@ -1001,10 +850,12 @@ textarea {
   background: rgba(239, 68, 68, 0.15);
   color: #ef4444;
 }
+
 .priority-Sedang {
   background: rgba(245, 158, 11, 0.15);
   color: #f59e0b;
 }
+
 .priority-Rendah {
   background: rgba(16, 185, 129, 0.15);
   color: #10b981;
@@ -1045,10 +896,10 @@ textarea {
 .task-status-checkbox input[type="checkbox"] {
   width: 18px;
   height: 18px;
-  accent-color: var(--accent-primary);
+  accent-color: var(--apple-accent);
 }
 
-/* --- 9. CLASS MEMBERS & BOARD PROFILES --- */
+/* ---------- 9. PROFIL MEMBER ---------- */
 .members-filter {
   display: flex;
   gap: 0.5rem;
@@ -1079,7 +930,7 @@ textarea {
 
 .member-card:hover {
   transform: translateY(-6px);
-  border-color: var(--accent-primary);
+  border-color: var(--apple-accent);
   box-shadow: var(--shadow-md);
 }
 
@@ -1088,7 +939,7 @@ textarea {
   height: 84px;
   border-radius: var(--radius-full);
   object-fit: cover;
-  border: 3px solid var(--accent-primary);
+  border: 3px solid var(--apple-accent);
   margin-bottom: 1rem;
   box-shadow: var(--shadow-sm);
 }
@@ -1119,7 +970,7 @@ textarea {
   overflow: hidden;
 }
 
-/* --- 10. Extra Fitur: KAS, ANNOUNCEMENTS, GALLERY --- */
+/* ---------- 10. KAS, PENGUMUMAN & GALERI ---------- */
 .extra-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1137,7 +988,7 @@ textarea {
   gap: 1.25rem;
 }
 
-/* Profil card */
+/* Kartu profil wali/pengurus */
 .glass-box-center {
   display: inline-flex;
   flex-direction: column;
@@ -1148,39 +999,37 @@ textarea {
   max-width: 100%;
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid var(--border-color);
-  background: var(--bg-card);
-  padding: 0.5rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--apple-border);
+  background: var(--apple-card);
+  padding: 1.5rem;
+  box-shadow: var(--apple-shadow);
+  backdrop-filter: saturate(160%) blur(16px);
+  -webkit-backdrop-filter: saturate(160%) blur(16px);
   margin: 0.5rem;
   vertical-align: top;
+  transition: var(--transition);
 }
 
-/* Adaptif image center*/
+.glass-box-center:hover {
+  transform: translateY(-6px);
+}
+
 .glass-box-center img {
   width: 100%;
   height: auto;
   max-height: 220px;
   object-fit: cover;
   display: block;
-  border-radius: calc(var(--radius-md) - 4px);
+  border-radius: 18px;
 }
 
-.person-card-meta {
-  text-align: center;
-  width: 100%;
-  padding: 0.25rem 0.5rem 0.5rem;
-}
-
-.person-card-meta .person-name {
+.glass-box-center h3 {
   font-weight: 700;
-  font-size: 1rem;
-  color: var(--text-title);
+  letter-spacing: -0.01em;
 }
 
-.person-card-meta .person-role {
-  font-size: 0.85rem;
-  color: var(--text-muted);
+.wali-container .glass-box-center {
+  max-width: 380px;
 }
 
 .kas-balance-display {
@@ -1238,6 +1087,7 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: var(--transition);
 }
 
@@ -1258,45 +1108,71 @@ textarea {
   transition: var(--transition);
 }
 
-.gallery-item:hover .gallery-overlay {
+.gallery-item figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 60%);
+  padding: 1rem;
+  color: #fff;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-overlay,
+.gallery-item:hover figcaption {
   opacity: 1;
 }
 
-/* --- 11. Musik --- */
+/* Layar sentuh: tidak ada hover, caption langsung tampil */
+@media (hover: none) {
+  .gallery-overlay,
+  .gallery-item figcaption {
+    opacity: 1;
+  }
+}
+
+/* ---------- 11. MUSIC PLAYER ---------- */
 .music-player-widget {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  background: var(--bg-card-solid);
-  border: 1px solid var(--border-glow);
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--radius-full);
-  box-shadow: var(--shadow-md);
+  bottom: 24px;
+  right: 24px;
+  background: var(--apple-nav);
+  border: 1px solid var(--apple-border);
+  padding: 10px 12px;
+  border-radius: 999px;
+  box-shadow: var(--apple-shadow);
   display: flex;
   align-items: center;
   gap: 0.85rem;
   z-index: 900;
-  backdrop-filter: var(--backdrop-blur);
+  backdrop-filter: saturate(160%) blur(20px);
+  -webkit-backdrop-filter: saturate(160%) blur(20px);
 }
 
 .music-disc {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-full);
-  background: var(--gradient-badge);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--apple-accent), var(--apple-accent-2));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #fff;
 }
 
 .music-disc.playing {
-  animation: spin 4s linear infinite;
+  animation: spin 3s linear infinite;
 }
 
 @keyframes spin {
-  100% {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
     transform: rotate(360deg);
   }
 }
@@ -1308,24 +1184,30 @@ textarea {
 
 .music-title {
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 600;
+  color: var(--apple-text);
 }
 
 .music-sub {
-  font-size: 0.75rem;
-  color: var(--text-muted);
+  font-size: 0.7rem;
+  color: var(--apple-text-2);
 }
 
 .btn-music-toggle {
-  padding: 0.3rem 0.6rem;
-  border-radius: var(--radius-full);
-  background: var(--accent-primary);
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--apple-accent);
   color: #fff;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: var(--transition);
 }
 
-/* --- 12. MODAL DIALOGS --- */
+.btn-music-toggle:hover {
+  filter: brightness(1.08);
+}
+
+/* ---------- 12. MODAL & FORM ---------- */
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -1335,6 +1217,7 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
   opacity: 0;
   pointer-events: none;
   transition: var(--transition);
@@ -1392,7 +1275,7 @@ textarea {
   color: var(--text-muted);
 }
 
-.form-control-input {
+.form-control {
   padding: 0.75rem 1rem;
   border-radius: var(--radius-sm);
   background: var(--bg-input);
@@ -1403,7 +1286,7 @@ textarea {
 }
 
 .form-control:focus {
-  border-color: var(--accent-primary);
+  border-color: var(--apple-accent);
   box-shadow: var(--shadow-glow);
 }
 
@@ -1411,22 +1294,25 @@ textarea {
   display: none !important;
 }
 
-/* --- 13. FOOTER --- */
+/* ---------- 13. FOOTER ---------- */
 .footer {
   margin-top: 4rem;
-  border-top: 1px solid var(--border-color);
-  padding: 2.5rem 1.5rem;
-  background: var(--bg-card);
+  border-top: 1px solid var(--apple-border);
+  padding: 2rem 1.5rem;
+  color: var(--apple-text-2);
   text-align: center;
-  font-size: 0.85rem;
-  color: var(--text-muted);
+  font-size: 0.8rem;
 }
 
 .footer strong {
-  color: var(--text-main);
+  color: var(--apple-text);
 }
 
-/* --- RESPONSIVE MEDIA QUERIES --- */
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Tablet (≤900px) */
 @media (max-width: 900px) {
   .hero-container {
     grid-template-columns: 1fr;
@@ -1434,121 +1320,198 @@ textarea {
   .extra-grid {
     grid-template-columns: 1fr;
   }
-  .nav-menu {
-    display: none;
-  }
   .hero-title {
     font-size: 2.25rem;
   }
+  .nav-menu {
+    display: none;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-}
-body {
-  animation: pageLoad 0.8s ease;
-}
-@keyframes pageLoad {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
+/* ============================================================
+   MOBILE (≤768px) — NAVBAR PINDAH KE BAWAH
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Top navbar jadi compact.
+     transform & backdrop-filter dihapus karena keduanya membuat
+     containing block — akan menjebak .nav-menu (position: fixed)
+     sehingga tidak nempel di bawah layar. */
+  .navbar {
+    top: 10px;
+    left: 8px;
+    right: 8px;
+    width: auto;
+    padding: 8px 12px;
+    border-radius: 22px;
     transform: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--apple-card-solid);
   }
-}
-.card,
-.gallery-item,
-.member-card,
-.teacher-card,
-.info-card {
-  transition: 0.35s ease;
-}
-.card:hover,
-.gallery-item:hover,
-.member-card:hover,
-.teacher-card:hover,
-.info-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
-}
+  .school-logo {
+    width: 34px;
+    height: 34px;
+  }
+  .brand-text p {
+    display: none;
+  }
+  .nav-actions {
+    gap: 0.6rem;
+  }
+  .theme-toggle-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+  }
+  .user-badge {
+    display: none;
+  }
+  .btn-logout {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
 
-/* jadwal */
-:root {
-            --apple-bg: #0F111A; 
-            --apple-card: rgba(255, 255, 255, 0.04);
-            --apple-border: rgba(255, 255, 255, 0.1);
-            --apple-blue: #007AFF;
-            --dawn-glow: #FF9E6D;
-            --ease: cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-        body {
-    background-color: var(--bg-main);
-    color: var(--text-main);
-    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100dvh;
-    background-image: radial-gradient(circle at top right,
-        rgba(0,122,255,.05), transparent 40%);
-}
-
-        .navbar {
-    background: var(--bg-nav);
-    backdrop-filter: var(--backdrop-blur);
-    border-bottom: 1px solid var(--border-color);
-}
-        .glass-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    backdrop-filter: blur(25px) saturate(180%);
-    -webkit-backdrop-filter: blur(25px) saturate(180%);
-    border-radius: 28px;
-    transition: all .5s var(--ease);
-}
-
-.active-day { 
-    border-color: var(--apple-blue) !important; /* Tambahkan !important jika tertimpa Tailwind */
-    background: rgba(0, 122, 255, 0.08) !important; 
-    box-shadow: 0 0 40px rgba(0, 122, 255, 0.1); 
-    transform: scale(1.02); 
-    transition: all 0.3s ease; /* Tambahan agar animasinya mulus */
-} 
-.active-day .day-indicator { 
-    background: var(--apple-blue) !important; 
-    color: white !important; 
-    opacity: 1 !important; 
-}
-
-        .subject-badge {
-    background: var(--bg-card-solid);
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
+  /* Menu jadi bottom navigation bar */
+  .nav-menu {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1500;
+    margin: 0;
+    padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
+    background: var(--apple-nav);
+    backdrop-filter: saturate(160%) blur(20px);
+    -webkit-backdrop-filter: saturate(160%) blur(20px);
+    border-top: 1px solid var(--apple-border);
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.08);
+    justify-content: space-around;
+    gap: 2px;
+    align-items: stretch;
+  }
+  [data-theme="dark"] .nav-menu {
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.45);
+  }
+  .nav-menu li {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .nav-menu .nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    padding: 6px 2px;
     border-radius: 14px;
-    padding: 14px 20px;
-    font-size: 14px;
-    font-weight: 500;
+    width: 100%;
+    color: var(--apple-text-2);
+    line-height: 1.1;
+  }
+  .nav-menu .nav-link:hover {
+    background: transparent;
+    color: var(--apple-text);
+  }
+  .nav-menu .nav-link.active {
+    background: rgba(0, 113, 227, 0.12);
+    color: var(--apple-accent);
+    box-shadow: none;
+  }
+  .nav-menu .nav-link .nav-icon {
     display: flex;
     align-items: center;
-    gap: 12px;
-    transition: .3s;
+    justify-content: center;
+    font-size: 1.3rem;
+    line-height: 1;
+  }
+
+  .nav-menu .nav-link .nav-icon svg {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+
+  /* Spasi konten agar tidak tertutup bottom nav */
+  body {
+    padding-bottom: calc(66px + env(safe-area-inset-bottom));
+  }
+  .hero-section {
+    padding-top: 96px;
+    padding-bottom: 40px;
+  }
+  .main-wrapper {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    gap: 3rem;
+  }
+
+  /* Grid & kartu menyesuaikan layar kecil */
+  .task-grid,
+  .timetable-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hero & CTA rata tengah di layar kecil */
+  .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+  .hero-pill {
+    margin: 0 auto;
+  }
+
+  /* Header/footer kartu tidak mudah berantakan saat teks panjang */
+  .task-card-header,
+  .task-footer,
+  .today-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Saldo kas rata tengah di mobile */
+  .kas-balance-display {
+    align-items: center;
+    text-align: center;
+  }
+  .member-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  .today-stats {
+    gap: 0.5rem;
+  }
+  .stat-num {
+    font-size: 1.25rem;
+  }
+  .tasks-control-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .task-filter-group {
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+  .task-card {
+    padding: 1rem;
+  }
+  .btn-add-task {
+    justify-content: center;
+  }
+  .modal-card {
+    padding: 1.5rem;
+    width: 100%;
+  }
+  .footer {
+    padding-bottom: calc(2rem + 66px + env(safe-area-inset-bottom));
+  }
+
+  /* Music player naik ke atas bottom nav */
+  .music-player-widget {
+    bottom: calc(80px + env(safe-area-inset-bottom));
+    right: 12px;
+  }
 }
-
-        .subject-badge:hover {
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .playfair { font-family: 'Playfair Display', serif; }
-        
-        .grain {
-            position: fixed; inset: 0; z-index: 100; pointer-events: none; opacity: 0.03;
-            background-image: url('https://feeldreams.github.io/pusat/pics/noise.gif');
-        }
-
-        .orb {
-            position: fixed; width: 400px; height: 400px; border-radius: 50%;
-            filter: blur(120px); opacity: 0.1; z-index: -1;
-        }
