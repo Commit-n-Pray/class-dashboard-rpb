@@ -13,7 +13,9 @@ const APP = {
   init() {
     this.initTheme();
     AUTH.init();
-    if (window.RENDERER) {
+    // RENDERER dideklarasikan const di top-level → TIDAK ada di window.
+    // Cek via typeof (sama seperti bug AUTH dulu), bukan window.RENDERER.
+    if (typeof RENDERER !== "undefined") {
       RENDERER.init();
     }
     this.bindEvents();
@@ -75,7 +77,8 @@ const APP = {
       });
     }
 
-    // Add Task Form
+    // Add Task Form — data dikelola __TASKS (tasks.js), bukan CLASS_DATA.initialTasks
+    // (yang dikomentari di data.js sehingga selalu undefined dan bikin modal crash).
     const addTaskForm = document.getElementById("add-task-form");
     if (addTaskForm) {
       addTaskForm.addEventListener("submit", (e) => {
@@ -86,19 +89,9 @@ const APP = {
         const priority = document.getElementById("task-priority-input").value;
         const note = document.getElementById("task-note-input").value;
 
-        const newTask = {
-          id: "t" + (CLASS_DATA.initialTasks.length + 1),
-          subject,
-          title,
-          dueDate,
-          priority,
-          status: "Belum",
-          note: note || "Tugas baru ditambahkan pengurus.",
-          assignedBy: AUTH.getCurrentUser() ? AUTH.getCurrentUser().name : "Pengurus"
-        };
-
-        CLASS_DATA.initialTasks.unshift(newTask);
-        if (window.RENDERER) RENDERER.renderTasks();
+        if (typeof __TASKS !== "undefined" && __TASKS.addTask) {
+          __TASKS.addTask({ subject, title, dueDate, priority, note });
+        }
         this.closeModal("add-task-modal");
         addTaskForm.reset();
         alert("Tugas pengingat baru berhasil ditambahkan!");

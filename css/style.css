@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&display=swap");
 
 /* ============================================================
    X-RPB SKARIGA — STYLESHEET PORTAL KELAS
@@ -44,8 +44,6 @@
   --accent-amber: #ff9500;
   --gradient-hero: linear-gradient(135deg, rgba(0, 113, 227, 0.09), rgba(88, 86, 214, 0.09));
   --gradient-badge: linear-gradient(135deg, #0071e3, #5856d6);
-  --gradient-btn: linear-gradient(135deg, #0071e3, #5856d6);
-  --gradient-btn-hover: linear-gradient(135deg, #0a84ff, #5e5ce6);
   --shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 18px 50px rgba(0, 0, 0, 0.1);
   --shadow-glow: 0 10px 40px rgba(0, 113, 227, 0.25);
@@ -86,8 +84,6 @@
   --accent-amber: #ff9f0a;
   --gradient-hero: linear-gradient(135deg, rgba(41, 151, 255, 0.12), rgba(191, 90, 242, 0.1));
   --gradient-badge: linear-gradient(135deg, #2997ff, #bf5af2);
-  --gradient-btn: linear-gradient(135deg, #2997ff, #bf5af2);
-  --gradient-btn-hover: linear-gradient(135deg, #64d2ff, #bf5af2);
   --shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 18px 50px rgba(0, 0, 0, 0.45);
   --shadow-glow: 0 10px 40px rgba(41, 151, 255, 0.35);
@@ -106,7 +102,7 @@
 html {
   scroll-behavior: smooth;
   font-family:
-    "Plus Jakarta Sans",
+    "Karla",
     -apple-system,
     BlinkMacSystemFont,
     sans-serif;
@@ -117,8 +113,8 @@ body {
   /* Nuansa radial lembut khas tema gelap (sama seperti desain awal) */
   background-image: radial-gradient(circle at top right, rgba(0, 122, 255, 0.05), transparent 40%);
   color: var(--apple-text);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Plus Jakarta Sans", sans-serif;
+  font-family: "Karla", -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
   min-height: 100dvh;
@@ -241,9 +237,8 @@ textarea {
 }
 
 .nav-link.active {
-  color: #fff;
-  background: var(--apple-accent);
-  box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35);
+  color: var(--apple-bg);
+  background: var(--apple-text);
 }
 
 /* Ikon nav: hanya tampil pada bottom nav mobile */
@@ -287,20 +282,19 @@ textarea {
   box-shadow: none;
 }
 
+/* Tombol aksi flat ala Apple: putih di mode gelap, hitam di mode terang — tanpa glow. */
 .btn-login {
   padding: 0.55rem 1.25rem;
   border-radius: var(--radius-full);
-  background: var(--apple-accent);
-  color: #fff;
+  background: var(--apple-text);
+  color: var(--apple-bg);
   font-size: 0.85rem;
   font-weight: 700;
-  box-shadow: 0 8px 20px rgba(0, 113, 227, 0.3);
   transition: var(--transition);
 }
 
 .btn-login:hover {
-  filter: brightness(1.08);
-  transform: translateY(-2px);
+  opacity: 0.82;
 }
 
 .btn-logout {
@@ -428,71 +422,6 @@ textarea {
 #hero-today-banner ul::-webkit-scrollbar-thumb {
   background: var(--apple-border);
   border-radius: 999px;
-}
-
-.today-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.today-header h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.day-tag {
-  background: var(--apple-accent);
-  color: #fff;
-  padding: 0.2rem 0.7rem;
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.today-uniform-box {
-  background: rgba(0, 113, 227, 0.08);
-  border-left: 3px solid var(--apple-accent);
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  font-size: 0.875rem;
-}
-
-.today-uniform-box strong {
-  display: block;
-  font-size: 0.75rem;
-  color: var(--apple-text-2);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.today-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-}
-
-.stat-item {
-  background: var(--apple-card-solid);
-  padding: 0.85rem;
-  border-radius: 16px;
-  text-align: center;
-  border: 1px solid var(--apple-border);
-  box-shadow: var(--apple-shadow-sm);
-}
-
-.stat-num {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--apple-text);
-}
-
-.stat-label {
-  font-size: 0.75rem;
-  color: var(--apple-text-2);
 }
 
 /* ---------- 5. LAYOUT UTAMA & SECTION HEADER ---------- */
@@ -650,13 +579,6 @@ textarea {
   flex-shrink: 0;
 }
 
-.day-tabs {
-  display: flex;
-  gap: 0.5rem;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-}
-
 .day-tab-btn {
   padding: 0.65rem 1.25rem;
   border-radius: var(--radius-full);
@@ -674,84 +596,9 @@ textarea {
 }
 
 .day-tab-btn.active {
-  color: #fff;
-  background: var(--apple-accent);
-  border-color: var(--apple-accent);
-  box-shadow: var(--shadow-glow);
-}
-
-.uniform-card {
-  background: var(--gradient-hero);
-  border: 1px solid var(--border-glow);
-  border-radius: var(--radius-md);
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.uniform-icon {
-  font-size: 2.2rem;
-  background: var(--bg-card);
-  width: 54px;
-  height: 54px;
-  border-radius: var(--radius-full);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.timetable-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.25rem;
-}
-
-.subject-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1.25rem;
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.subject-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--apple-accent);
-}
-
-.subject-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--apple-accent);
-  box-shadow: var(--shadow-md);
-}
-
-.subject-time {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--apple-accent);
-  margin-bottom: 0.4rem;
-}
-
-.subject-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.subject-meta {
-  font-size: 0.825rem;
-  color: var(--text-muted);
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+  color: var(--apple-bg);
+  background: var(--apple-text);
+  border-color: var(--apple-text);
 }
 
 /* ---------- 7. PENGINGAT TUGAS ---------- */
@@ -781,24 +628,32 @@ textarea {
   white-space: nowrap;
 }
 
-.filter-chip.active,
 .filter-chip:hover {
-  background: var(--apple-accent);
-  color: #fff;
-  border-color: var(--apple-accent);
+  background: var(--apple-card-solid);
 }
 
+.filter-chip.active {
+  background: var(--apple-text);
+  color: var(--apple-bg);
+  border-color: var(--apple-text);
+}
+
+/* Tombol aksi flat ala Apple: putih di mode gelap, hitam di mode terang — tanpa glow. */
 .btn-add-task {
   padding: 0.55rem 1.2rem;
   border-radius: var(--radius-md);
-  background: var(--gradient-btn);
-  color: #fff;
+  background: var(--apple-text);
+  color: var(--apple-bg);
   font-size: 0.85rem;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  box-shadow: var(--shadow-glow);
+  transition: var(--transition);
+}
+
+.btn-add-task:hover {
+  opacity: 0.82;
 }
 
 .task-grid {
@@ -821,6 +676,14 @@ textarea {
 .task-card:hover {
   border-color: var(--border-glow);
   box-shadow: var(--shadow-md);
+}
+
+.task-card.task-done {
+  opacity: 0.62;
+}
+
+.task-card.task-done .task-title {
+  text-decoration: line-through;
 }
 
 .task-card-header {
@@ -1048,27 +911,6 @@ textarea {
   color: var(--accent-emerald);
 }
 
-.announcement-item {
-  background: var(--bg-input);
-  border: 1px solid var(--border-color);
-  border-left: 4px solid var(--accent-amber);
-  padding: 1rem;
-  border-radius: var(--radius-sm);
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.announcement-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-}
-
-.announcement-date {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -1095,19 +937,6 @@ textarea {
   transform: scale(1.08);
 }
 
-.gallery-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 60%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1rem;
-  color: #fff;
-  opacity: 0;
-  transition: var(--transition);
-}
-
 .gallery-item figcaption {
   position: absolute;
   left: 0;
@@ -1121,14 +950,12 @@ textarea {
   transition: var(--transition);
 }
 
-.gallery-item:hover .gallery-overlay,
 .gallery-item:hover figcaption {
   opacity: 1;
 }
 
 /* Layar sentuh: tidak ada hover, caption langsung tampil */
 @media (hover: none) {
-  .gallery-overlay,
   .gallery-item figcaption {
     opacity: 1;
   }
@@ -1196,15 +1023,15 @@ textarea {
 .btn-music-toggle {
   padding: 8px 16px;
   border-radius: 999px;
-  background: var(--apple-accent);
-  color: #fff;
+  background: var(--apple-text);
+  color: var(--apple-bg);
   font-size: 0.8rem;
   font-weight: 600;
   transition: var(--transition);
 }
 
 .btn-music-toggle:hover {
-  filter: brightness(1.08);
+  opacity: 0.82;
 }
 
 /* ---------- 12. MODAL & FORM ---------- */
@@ -1417,8 +1244,8 @@ textarea {
     color: var(--apple-text);
   }
   .nav-menu .nav-link.active {
-    background: rgba(0, 113, 227, 0.12);
-    color: var(--apple-accent);
+    background: var(--apple-text);
+    color: var(--apple-bg);
     box-shadow: none;
   }
   .nav-menu .nav-link .nav-icon {
@@ -1449,8 +1276,7 @@ textarea {
   }
 
   /* Grid & kartu menyesuaikan layar kecil */
-  .task-grid,
-  .timetable-grid {
+  .task-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1465,8 +1291,7 @@ textarea {
 
   /* Header/footer kartu tidak mudah berantakan saat teks panjang */
   .task-card-header,
-  .task-footer,
-  .today-header {
+  .task-footer {
     flex-wrap: wrap;
     gap: 0.5rem;
   }
@@ -1479,12 +1304,6 @@ textarea {
   .member-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 1rem;
-  }
-  .today-stats {
-    gap: 0.5rem;
-  }
-  .stat-num {
-    font-size: 1.25rem;
   }
   .tasks-control-bar {
     flex-direction: column;
@@ -1513,5 +1332,347 @@ textarea {
   .music-player-widget {
     bottom: calc(80px + env(safe-area-inset-bottom));
     right: 12px;
+  }
+}
+
+
+/* ---------- 14. PIKET & KALENDER ---------- */
+.title-accent {
+  color: #7b7cf7;
+  font-weight: 800;
+}
+
+.cal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.cal-month {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  min-width: 8rem;
+  text-align: center;
+}
+
+.cal-nav-btn {
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-size: 1.1rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.cal-nav-btn:hover {
+  background: var(--apple-card-solid);
+  border-color: var(--apple-accent);
+}
+
+.mini-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.cal-weekday {
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  padding: 2px 0 6px;
+}
+
+.cal-day {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-main);
+  border-radius: 10px;
+  position: relative;
+  transition: var(--transition);
+}
+
+.cal-day.other {
+  visibility: hidden;
+}
+
+.cal-day:hover {
+  background: var(--bg-input);
+}
+
+.cal-day.today {
+  outline: 1.5px solid var(--apple-accent);
+  outline-offset: -1px;
+  font-weight: 800;
+  color: var(--apple-accent);
+}
+
+.cal-day.has-piket::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--apple-accent);
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cal-legend {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.cal-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dot-piket,
+.dot-today {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-piket {
+  background: var(--apple-accent);
+}
+
+.dot-today {
+  border: 1.5px solid var(--apple-accent);
+}
+
+.piket-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.petugas-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.petugas-pill {
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.petugas-pill:hover {
+  border-color: var(--apple-accent);
+}
+
+.petugas-pill.selected {
+  background: var(--apple-accent);
+  border-color: var(--apple-accent);
+  color: #fff;
+}
+
+/* Tombol aksi flat ala Apple: putih di mode gelap, hitam di mode terang,
+   tanpa gradien & tanpa glow — warna mengikuti var(--apple-text)/var(--apple-bg). */
+.btn-simpan {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--radius-md);
+  background: var(--apple-text);
+  color: var(--apple-bg);
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.btn-simpan:hover {
+  opacity: 0.82;
+}
+
+.riwayat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.count-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-full);
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.piket-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+}
+
+.piket-date-box {
+  flex-shrink: 0;
+  width: 3.6rem;
+  text-align: center;
+  background: linear-gradient(180deg, #fbbf24, #f59e0b);
+  color: #1a1a2e;
+  border-radius: 12px;
+  padding: 0.5rem 0.25rem;
+}
+
+.piket-date-box .d {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.piket-date-box .wd {
+  font-size: 0.48rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  margin-top: 0.15rem;
+  text-transform: uppercase;
+}
+
+.piket-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.piket-date-full {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.piket-names {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+}
+
+.piket-name {
+  padding: 0.22rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: var(--apple-card-solid);
+  border: 1px solid var(--border-color);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.piket-note {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.btn-hapus {
+  flex-shrink: 0;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-full);
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #f87171;
+  font-size: 0.72rem;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.btn-hapus:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* Desktop: kalender tidak melebar penuh & angkanya lebih besar */
+@media (min-width: 768px) {
+  .mini-calendar {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cal-weekday {
+    font-size: 0.8rem;
+    padding: 4px 0 10px;
+  }
+
+  .cal-day {
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 14px;
+  }
+
+  .cal-day.has-piket::after {
+    width: 7px;
+    height: 7px;
+    bottom: 8px;
+  }
+
+  .cal-day.today {
+    outline-width: 2px;
+  }
+
+  .cal-month {
+    font-size: 1rem;
+  }
+
+  .cal-nav-btn {
+    width: 2.3rem;
+    height: 2.3rem;
+    font-size: 1.3rem;
+  }
+
+  .cal-legend {
+    justify-content: center;
   }
 }

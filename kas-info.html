@@ -14,12 +14,12 @@
 })();
 </script>
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+<link rel="stylesheet" href="css/papan.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,700&display=swap" rel="stylesheet">
 
 </head>
-<body>
+<body class="papan-theme page-kas">
 
   <header class="navbar">
     <div class="nav-brand">
@@ -38,6 +38,7 @@
         <li><a href="anggota.html" class="nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>Profil</a></li>
         <li><a href="kas-info.html" class="nav-link active"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path></svg></span>Info</a></li>
         <li><a href="galeri.html" class="nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg></span>Galeri</a></li>
+        <li><a href="piket.html" class="nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13 11 9-9"></path><path d="M14.6 12.6 3 22"></path><path d="m5 11 4 4"></path><path d="m9 15 4 4"></path></svg></span>Piket</a></li>
       </ul>
     </nav>
 
@@ -48,8 +49,17 @@
     </div>
   </header>
 
-  <main class="main-wrapper" style="margin-top: 100px;">
-    <section data-aos="fade-up" class="extra-grid">
+  <main class="xr-main" style="margin-top: 100px;">
+    <section class="extra-grid">
+      <div class="xr-sec-head" style="grid-column: 1 / -1;">
+        <div class="xr-sec-meta">
+          <span class="xr-sec-num">01</span>
+          <span class="xr-sec-kicker">Kas &amp; Info</span>
+        </div>
+        <h2 class="xr-sec-title">Transparansi <em>Kas</em> Kelas</h2>
+        <p class="xr-sec-desc">Saldo, riwayat transaksi, dan papan pengumuman kelas — semuanya terbuka untuk seluruh anggota.</p>
+      </div>
+
       <!-- Transparansi Kas Kelas -->
       <div class="glass-box">
         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -60,7 +70,7 @@
         <div class="kas-balance-display">
           <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Total Saldo Kas Terkumpul</span>
           <div class="balance-amount" id="kas-balance-amount">Rp 0</div>
-          <span style="font-size: 0.75rem; color: var(--text-muted);">Target Kas Semester: Rp 2.000.000</span>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Target Kas Semester: Tidak Ada</span>
         </div>
 
         <h4 style="font-size: 0.9rem; font-weight: 700; margin-top: 0.5rem;">Riwayat Transaksi Terakhir:</h4>
@@ -85,7 +95,7 @@
       <span class="music-title">Lo-Fi Study Ambient</span>
       <span class="music-sub">Fokus Belajar Kelas</span>
     </div>
-    <button class="btn-music-toggle" id="btn-music-toggle" onclick="APP.toggleMusic()">▶️ Play</button>
+    <button class="btn-music-toggle" id="btn-music-toggle" onclick="APP.toggleMusic()">Play</button>
   </div>
   <audio id="bg-lofi-audio" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"></audio>
 
@@ -97,6 +107,5 @@
   <script src="js/auth.js"></script>
   <script src="js/components.js"></script>
   <script src="js/app.js"></script>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script><script>AOS.init({duration:900,once:true});</script>
 </body>
 </html>

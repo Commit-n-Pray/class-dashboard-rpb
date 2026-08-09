@@ -142,7 +142,11 @@ const RENDERER = {
     const gridEl = document.getElementById("task-grid");
     if (!gridEl) return;
 
-    let tasks = CLASS_DATA.initialTasks;
+    // Halaman tugas memakai manajer __TASKS (tasks.js) yang merender grid
+    // sendiri via DOMContentLoaded — biarkan __TASKS yang pegang kendali.
+    if (typeof __TASKS !== "undefined") return;
+
+    let tasks = CLASS_DATA.initialTasks || [];
     if (this.activeTaskFilter !== "Semua") {
       tasks = tasks.filter(t => t.status === this.activeTaskFilter);
     }
@@ -176,11 +180,7 @@ const RENDERER = {
   filterTasks(status) {
     this.activeTaskFilter = status;
     document.querySelectorAll(".task-filter-chip").forEach(el => {
-      if (el.textContent.trim().startsWith(status)) {
-        el.classList.add("active");
-      } else {
-        el.classList.remove("active");
-      }
+      el.classList.toggle("active", (el.dataset.status || "Semua") === status);
     });
     this.renderTasks();
   },
@@ -201,9 +201,14 @@ const RENDERER = {
     const gridEl = document.getElementById("member-grid");
     if (!gridEl) return;
 
-    let members = CLASS_DATA.members;
+    let members = CLASS_DATA.members || [];
     if (this.activeMemberRole !== "All") {
       members = members.filter(m => m.roleCategory === this.activeMemberRole);
+    }
+
+    if (members.length === 0) {
+      gridEl.innerHTML = `<div class="empty-state" style="grid-column: 1 / -1;">Belum ada data member. Pengurus akan segera melengkapi profil kelas.</div>`;
+      return;
     }
 
     gridEl.innerHTML = members.map(m => `
@@ -237,9 +242,16 @@ const RENDERER = {
     const historyEl = document.getElementById("kas-history-list");
     if (!balanceEl || !historyEl) return;
 
-    balanceEl.textContent = `Rp ${CLASS_DATA.finance.currentBalance.toLocaleString('id-ID')}`;
+    const finance = CLASS_DATA.finance || {};
+    balanceEl.textContent = `Rp ${(finance.currentBalance || 0).toLocaleString('id-ID')}`;
 
-    historyEl.innerHTML = CLASS_DATA.finance.history.map(item => `
+    const history = finance.history || [];
+    if (!history.length) {
+      historyEl.innerHTML = `<div class="empty-state">Belum ada transaksi tercatat.</div>`;
+      return;
+    }
+
+    historyEl.innerHTML = history.map(item => `
       <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-input); padding: 0.65rem 0.85rem; border-radius: var(--radius-sm); border-left: 3px solid ${item.type === 'in' ? 'var(--accent-emerald)' : '#ef4444'};">
         <div>
           <strong style="font-size: 0.85rem;">${item.desc}</strong>
@@ -257,7 +269,13 @@ const RENDERER = {
     const containerEl = document.getElementById("announcement-list");
     if (!containerEl) return;
 
-    containerEl.innerHTML = CLASS_DATA.announcements.map(ann => `
+    const announcements = CLASS_DATA.announcements || [];
+    if (!announcements.length) {
+      containerEl.innerHTML = `<div class="empty-state">Belum ada pengumuman baru. Pengurus akan memasang pengumuman di sini.</div>`;
+      return;
+    }
+
+    containerEl.innerHTML = announcements.map(ann => `
       <div class="announcement-item">
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <span style="font-size: 0.7rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: var(--radius-full); background: var(--accent-primary); color: #fff;">
@@ -276,7 +294,11 @@ const RENDERER = {
     const gridEl = document.getElementById("gallery-grid");
     if (!gridEl) return;
 
-    gridEl.innerHTML = CLASS_DATA.gallery.map(item => `
+    // Data galeri masih kosong → biarkan konten statis (figure) tetap tampil
+    const gallery = CLASS_DATA.gallery || [];
+    if (!gallery.length) return;
+
+    gridEl.innerHTML = gallery.map(item => `
       <div class="gallery-item">
         <img src="${item.imageUrl}" alt="${item.title}">
         <div class="gallery-overlay">
