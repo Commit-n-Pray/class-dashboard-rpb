@@ -3,807 +3,459 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Portal Resmi X-RPB SKARIGA | Sovereign Archive</title>
+  <meta name="description" content="Portal resmi kelas X-RPB SMKS PGRI 3 Malang — jadwal, tugas, piket, dan kabar kelas dalam satu papan.">
+  <title>Log in | Portal Kelas X-RPB SKARIGA</title>
   <link rel="icon" type="image/x-icon" href="Assets/xrpb.jpg">
+  <script>
+    (() => {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme_preference") || "dark"
+      );
+    })();
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,700&display=swap" rel="stylesheet">
-  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/papan.css">
+
   <style>
-    :root {
-  --apple-blue: #007aff;
-  --apple-indigo: #5856d6;
-  --bg-left: #0f172a;
-  --bg-right: #ffffff;
-  --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Karla", sans-serif;
-}
-
-.split-container {
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
-  background: var(--bg-right);
-}
-
-/* --- BRANDING SIDE --- */
-.branding-side {
-  flex: 1.2;
-  background: radial-gradient(120% 130% at 0% 0%, #17213b 0%, #0f172a 55%, #0a0f1e 100%);
-  padding: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  color: white;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-/* Lapisan dekoratif animasi */
-.branding-bg {
-  position: absolute;
-  inset: -5%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.branding-bg .dot-grid {
-  position: absolute;
-  inset: -100%;
-  background-image: radial-gradient(rgba(148, 163, 184, 0.16) 1px, transparent 1px);
-  background-size: 34px 34px;
-  animation: gridDrift 30s linear infinite;
-  mask-image: radial-gradient(45% 40% at 50% 45%, #000 55%, transparent 92%);
-  -webkit-mask-image: radial-gradient(45% 40% at 50% 45%, #000 55%, transparent 92%);
-}
-
-.branding-bg .orb {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.5;
-}
-
-.branding-bg .orb-1 {
-  width: 46vmax;
-  height: 46vmax;
-  left: -18%;
-  top: -22%;
-  background: radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.55), transparent 68%);
-  animation: orbFloat1 22s ease-in-out infinite;
-}
-
-.branding-bg .orb-2 {
-  width: 38vmax;
-  height: 38vmax;
-  right: -14%;
-  bottom: -18%;
-  background: radial-gradient(circle at 60% 40%, rgba(139, 92, 246, 0.45), transparent 68%);
-  animation: orbFloat2 26s ease-in-out infinite;
-}
-
-.branding-bg .orb-3 {
-  width: 30vmax;
-  height: 30vmax;
-  left: 34%;
-  top: 36%;
-  background: radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.34), transparent 66%);
-  animation: orbFloat3 30s ease-in-out infinite;
-}
-
-.branding-bg .aurora {
-  position: absolute;
-  inset: -20%;
-  background: conic-gradient(from 90deg at 50% 40%, transparent 0deg, rgba(56, 189, 248, 0.11) 60deg, rgba(56, 189, 248, 0.04) 100deg, transparent 140deg, rgba(99, 102, 241, 0.1) 240deg, rgba(99, 102, 241, 0.04) 280deg, transparent 320deg);
-  filter: blur(20px);
-  animation: auroraSpin 26s linear infinite;
-}
-
-/* Vignette & gradasi lembut di tepi */
-.branding-side::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    radial-gradient(90% 70% at 50% 0%, transparent 55%, rgba(2, 6, 23, 0.5) 100%),
-    linear-gradient(180deg, rgba(2, 6, 23, 0.28), transparent 32%);
-}
-
-.branding-content {
-  position: relative;
-  z-index: 10;
-}
-
-/* Header brand */
-.brand-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-body.page-in .brand-header {
-  animation: fadeUp 1s var(--ease-lux) 0.05s both;
-}
-
-.brand-logo-wrap {
-  position: relative;
-  width: 56px;
-  height: 56px;
-  flex-shrink: 0;
-}
-
-.brand-logo {
-  width: 56px;
-  height: 56px;
-  object-fit: cover;
-  border-radius: 16px;
-  border: 1.5px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5);
-  position: relative;
-  z-index: 2;
-}
-
-.logo-ring {
-  position: absolute;
-  inset: -7px;
-  border-radius: 20px;
-  border: 1.5px solid rgba(56, 189, 248, 0.55);
-  animation: ringPulse 3s var(--ease-lux) infinite;
-}
-
-.brand-name {
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  font-size: 1.3rem;
-  line-height: 1.1;
-  background: linear-gradient(90deg, #ffffff 25%, #93c5fd 50%, #ffffff 75%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textShimmer 6s linear infinite;
-}
-
-.brand-sub {
-  font-size: 9px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: rgba(148, 163, 184, 0.95);
-  margin-top: 4px;
-}
-
-.brand-middle {
-  margin-top: 46px;
-}
-
-.badge-wrap {
-  margin-top: 18px;
-  margin-bottom: 34px;
-}
-
-body.page-in .badge-wrap {
-  animation: fadeUp 0.9s var(--ease-lux) 0.3s both;
-}
-
-.badge-premium {
-  display: inline-block;
-  padding: 8px 18px;
-  background: rgba(50, 215, 75, 0.12);
-  border: 1px solid rgba(50, 215, 75, 0.35);
-  color: #4ade80;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  border-radius: 50px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 26px rgba(50, 215, 75, 0.2), inset 0 0 14px rgba(50, 215, 75, 0.07);
-  animation: floatBob 5s ease-in-out 1.8s infinite;
-}
-
-.badge-premium::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 40%;
-  left: -60%;
-  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transform: skewX(-20deg);
-  animation: sweep 3.8s var(--ease-lux) 2.4s infinite;
-}
-
-/* Hero text dengan reveal per kata */
-.hero-text {
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
-  line-height: 1.1;
-  font-weight: 800;
-  letter-spacing: -2px;
-}
-
-.hero-text .line {
-  display: block;
-  overflow: hidden;
-  padding-block: 0.12em;
-  padding-inline: 0.15em;
-}
-
-.hero-text .line .word {
-  display: inline-block;
-}
-
-body.page-in .hero-text .line .word {
-  animation: wordReveal 1.1s var(--ease-lux) both;
-}
-
-.hero-text .line-1 .word:nth-child(1) { animation-delay: 0.2s; }
-.hero-text .line-1 .word:nth-child(2) { animation-delay: 0.33s; }
-.hero-text .line-1 .word:nth-child(3) { animation-delay: 0.46s; }
-.hero-text .line-2 .word:nth-child(1) { animation-delay: 0.59s; }
-.hero-text .line-2 .word:nth-child(2) { animation-delay: 0.72s; }
-
-.hero-text .word.accent-code {
-  font-family: "Playfair Display", serif;
-  font-style: italic;
-  background: linear-gradient(90deg, #7dd3fc, #818cf8, #38bdf8, #7dd3fc);
-  background-size: 250% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-body.page-in .hero-text .word.accent-code {
-  animation: wordReveal 1.1s var(--ease-lux) 0.33s both, textShimmer 5s linear 1.6s infinite;
-}
-
-.hero-text .word.accent-gold {
-  color: #facc15;
-}
-
-body.page-in .hero-text .word.accent-gold {
-  animation: wordReveal 1.1s var(--ease-lux) 0.59s both, goldPulse 3.2s ease-in-out 2s infinite;
-}
-
-.contact-info {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  gap: 30px;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  opacity: 0.65;
-}
-
-body.page-in .contact-info {
-  animation: fadeUp 1s var(--ease-lux) 0.65s both;
-}
-
-/* --- KEYFRAMES --- */
-@keyframes gridDrift {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(34px, 34px, 0); }
-}
-
-@keyframes orbFloat1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(6%, 8%) scale(1.12); }
-}
-
-@keyframes orbFloat2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-8%, -6%) scale(1.08); }
-}
-
-@keyframes orbFloat3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(9%, -7%) scale(1.14); }
-  66% { transform: translate(-7%, 6%) scale(0.94); }
-}
-
-@keyframes auroraSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes sweep {
-  0% { left: -60%; }
-  60%, 100% { left: 130%; }
-}
-
-@keyframes ringPulse {
-  0% { transform: scale(0.9); opacity: 0.9; }
-  70%, 100% { transform: scale(1.2); opacity: 0; }
-}
-
-@keyframes textShimmer {
-  to { background-position: 200% center; }
-}
-
-@keyframes wordReveal {
-  from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes floatBob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-@keyframes goldPulse {
-  0%, 100% { text-shadow: 0 0 22px rgba(250, 204, 21, 0.25); }
-  50% { text-shadow: 0 0 44px rgba(250, 204, 21, 0.55); }
-}
-
-/* Aksesibilitas: matikan animasi jika user meminta reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .branding-bg .orb,
-  .branding-bg .dot-grid,
-  .branding-bg .aurora,
-  .badge-wrap,
-  .badge-premium,
-  .badge-premium::after,
-  .hero-text .word,
-  .logo-ring,
-  .brand-name,
-  .brand-header,
-  .contact-info,
-  .login-box,
-  .intro-panel-left,
-  .intro-panel-right,
-  .intro-seam,
-  .intro-logo,
-  .intro-overlay {
-    animation: none !important;
-  }
-  .intro-overlay {
-    display: none;
-  }
-}
-
-/* --- INTRO CURTAIN: layar terbelah vertikal --- */
-/* Dibuka murni dengan CSS keyframes (tetap jalan walau JS gagal); JS hanya membersihkan DOM */
-.intro-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  animation: introOverlayDone 2.35s linear forwards;
-}
-
-.intro-panel {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50.6%;
-}
-
-.intro-panel-left {
-  left: 0;
-  background: radial-gradient(120% 130% at 0% 0%, #17213b 0%, #0f172a 55%, #0a0f1e 100%);
-  border-right: 1px solid rgba(56, 189, 248, 0.35);
-  animation: introOpenLeft 0.95s var(--ease-lux) 1s forwards;
-}
-
-.intro-panel-right {
-  right: 0;
-  background: #ffffff;
-  border-left: 1px solid rgba(56, 189, 248, 0.35);
-  animation: introOpenRight 0.95s var(--ease-lux) 1s forwards;
-}
-
-.intro-seam {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  transform: translateX(-50%);
-  background: linear-gradient(180deg, transparent, rgba(56, 189, 248, 0.9), transparent);
-  opacity: 0;
-  animation: introSeamIn 1.3s ease 0.85s forwards;
-}
-
-.intro-logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  text-align: center;
-  animation: introLogoOut 0.55s ease 1s forwards;
-}
-
-.intro-logo img {
-  width: 86px;
-  height: 86px;
-  object-fit: cover;
-  border-radius: 24px;
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
-}
-
-.intro-logo span {
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  color: #0f172a;
-  background: #ffffff;
-  padding: 7px 18px;
-  border-radius: 999px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-/* Keyframes intro curtain */
-@keyframes introOpenLeft {
-  from { transform: translateX(0); }
-  to { transform: translateX(-101%); }
-}
-
-@keyframes introOpenRight {
-  from { transform: translateX(0); }
-  to { transform: translateX(101%); }
-}
-
-@keyframes introLogoOut {
-  to {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1.2);
-  }
-}
-
-@keyframes introSeamIn {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-@keyframes introOverlayDone {
-  0%, 99% { visibility: visible; }
-  100% { visibility: hidden; }
-}
-
-/* --- LOGIN SIDE --- */
-.login-side {
-  flex: 0.8;
-  background: var(--bg-right);
-  padding: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #1c1c1e;
-}
-
-.login-box {
-  width: 100%;
-  max-width: 400px;
-}
-
-body.page-in .login-box {
-  animation: revealUp 1.2s var(--ease-lux);
-}
-
-@keyframes revealUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.login-header h2 {
-  font-size: 2.4rem;
-  font-weight: 800;
-  letter-spacing: -1px;
-  margin-bottom: 12px;
-}
-
-.login-header p {
-  font-size: 14px;
-  color: #8e8e93;
-  margin-bottom: 45px;
-  line-height: 1.6;
-}
-
-/* --- FORMS --- */
-.form-group {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #1c1c1e;
-  opacity: 0.8;
-}
-
-.form-control {
-  width: 100%;
-  padding: 18px 22px;
-  background: #f2f2f7;
-  border: 1.5px solid transparent;
-  border-radius: 16px;
-  outline: none;
-  transition: all 0.3s;
-  font-size: 14px;
-}
-
-.form-control:focus {
-  border-color: var(--apple-blue);
-  background: #fff;
-  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
-}
-
-.btn-login {
-  width: 100%;
-  padding: 18px;
-  background: #1c1c1e;
-  color: white;
-  border: none;
-  border-radius: 18px;
-  font-weight: 700;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.4s var(--ease-lux);
-  margin-top: 15px;
-}
-
-.btn-login:hover {
-  transform: translateY(-3px);
-  opacity: 0.85;
-}
-.btn-login:active {
-  transform: scale(0.98);
-}
-
-/* --- LANDING FOOTER --- */
-.landing-footer {
-  margin-top: 40px;
-  padding-top: 24px;
-  border-top: 1px solid #e5e7eb;
-  text-align: center;
-}
-
-.landing-footer p {
-  font-size: 10px;
-}
-
-.landing-footer-hint {
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 700;
-  color: #9ca3af;
-}
-
-.landing-footer-note {
-  color: #9ca3af;
-  margin-top: 4px;
-  letter-spacing: 0.5px;
-}
-
-.landing-footer-brand {
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-weight: 700;
-  color: #d1d5db;
-  margin-top: 12px;
-}
-
-/* --- MOBILE RESPONSIVE --- */
-@media (max-width: 1024px) {
-  .split-container {
-    flex-direction: column;
-  }
-  .branding-side {
-    flex: none;
-    min-height: 45vh;
-    padding: 40px 25px;
-  }
-  .login-side {
-    flex: none;
-    padding: 45px 25px;
-    border-radius: 30px 30px 0 0;
-    margin-top: -30px;
-    position: relative;
-    z-index: 20;
-  }
-  .hero-text {
-    font-size: 2.4rem;
-  }
-  .contact-info {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .branding-bg .orb {
-    opacity: 0.4;
-  }
-}
-
-.theme-toggle-btn {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 100;
-}
+    /* ============================================================
+       LOGIN — bahasa desain "papan kelas"
+       Scoped di body.login-page. Tidak ada gradien, glow, atau orb.
+       ============================================================ */
+
+    body.login-page {
+      background: var(--xr-bg);
+      color: var(--xr-ink);
+    }
+
+    /* Tombol ganti tema: style dasar dari style.css, posisikan floating */
+    .login-page .theme-toggle-btn {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 60;
+    }
+
+    /* --- Layout terbelah --- */
+    .login-split {
+      display: flex;
+      min-height: 100dvh;
+      position: relative;
+    }
+
+    /* ============ PANEL KIRI: BRANDING ============ */
+    .brand-panel {
+      flex: 1.1;
+      background: var(--xr-bg);
+      padding: clamp(2rem, 5vw, 4.5rem);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Bingkai dashed tipis ala papan */
+    .brand-panel::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border: 1.5px dashed var(--xr-line-strong);
+      border-radius: 26px;
+      pointer-events: none;
+    }
+
+    .brand-top {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Logo SMK PGRI — besar, dibingkai seperti stempel */
+    .logo-seal {
+      position: relative;
+      width: 84px;
+      height: 84px;
+      flex-shrink: 0;
+    }
+
+    .logo-seal img {
+      width: 84px;
+      height: 84px;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 1.5px solid var(--xr-line-strong);
+      box-shadow: var(--xr-shadow-sm);
+      transform: rotate(-3deg);
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-seal::after {
+      content: "";
+      position: absolute;
+      inset: -9px;
+      border-radius: 30px;
+      border: 1.5px dashed var(--xr-accent);
+      opacity: 0.45;
+    }
+
+    .brand-title {
+      font-family: var(--xr-serif);
+      font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--xr-ink);
+      line-height: 1.15;
+    }
+
+    .brand-sub {
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--xr-ink-2);
+      margin-top: 5px;
+    }
+
+    .brand-mid {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 560px;
+      padding: 2.5rem 0;
+    }
+
+    /* Stempel kecil "PORTAL RESMI KELAS" */
+    .stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      padding: 7px 15px;
+      border: 1.5px dashed var(--xr-accent);
+      color: var(--xr-accent);
+      border-radius: 10px;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      transform: rotate(-1.5deg);
+      margin-bottom: 26px;
+    }
+
+    .hero-statement {
+      font-family: var(--xr-serif);
+      font-size: clamp(2rem, 4.4vw, 3.5rem);
+      line-height: 1.12;
+      letter-spacing: -0.015em;
+      color: var(--xr-ink);
+    }
+
+    .hero-statement em {
+      font-style: italic;
+      color: var(--xr-accent);
+    }
+
+    .hero-copy {
+      color: var(--xr-ink-2);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-top: 1.3rem;
+      max-width: 430px;
+    }
+
+    .brand-foot {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 28px;
+      font-size: 0.64rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--xr-ink-2);
+    }
+
+    /* ============ PANEL KANAN: FORM LOGIN ============ */
+    .form-panel {
+      flex: 0.9;
+      background: var(--xr-bg-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(1.6rem, 4vw, 3rem);
+      position: relative;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--xr-card);
+      border: 1.5px solid var(--xr-line-strong);
+      border-radius: 22px;
+      box-shadow: var(--xr-shadow);
+      padding: 2.6rem 2.3rem 2rem;
+      position: relative;
+    }
+
+    /* Selotip di atas kartu */
+    .login-card::before {
+      content: "";
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      width: 118px;
+      height: 27px;
+      background: var(--xr-accent-2);
+      opacity: 0.22;
+      border: 1px solid var(--xr-line-strong);
+      border-radius: 3px;
+      pointer-events: none;
+    }
+
+    .login-head .kicker {
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--xr-accent);
+    }
+
+    .login-head h2 {
+      font-family: var(--xr-serif);
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--xr-ink);
+      margin-top: 8px;
+    }
+
+    .login-head p {
+      color: var(--xr-ink-2);
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin: 12px 0 28px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--xr-ink-2);
+      margin-bottom: 9px;
+    }
+
+    .login-page .form-control {
+      padding: 0.95rem 1.1rem;
+      border-radius: 12px;
+    }
+
+    .login-submit {
+      width: 100%;
+      justify-content: center;
+      padding: 1.05rem;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      margin-top: 10px;
+    }
+
+    .login-foot {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px dashed var(--xr-line-strong);
+      text-align: center;
+      font-size: 0.74rem;
+      line-height: 1.8;
+      color: var(--xr-ink-2);
+    }
+
+    .login-foot strong {
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--xr-ink);
+    }
+
+    /* Masuk halus — mati di reduced-motion */
+    @keyframes loginRise {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-card { animation: loginRise 0.7s var(--xr-ease) 0.1s both; }
+    .brand-mid { animation: loginRise 0.7s var(--xr-ease) both; }
+
+    /* ============ MOBILE ============ */
+    @media (max-width: 900px) {
+      .login-split {
+        flex-direction: column;
+      }
+
+      .brand-panel {
+        padding: 2.3rem 1.4rem 1.6rem;
+      }
+
+      .brand-panel::before {
+        inset: 14px;
+        border-radius: 18px;
+      }
+
+      .logo-seal {
+        width: 66px;
+        height: 66px;
+      }
+
+      .logo-seal img {
+        width: 66px;
+        height: 66px;
+        border-radius: 18px;
+      }
+
+      .logo-seal::after {
+        inset: -7px;
+        border-radius: 24px;
+      }
+
+      .brand-mid {
+        padding: 1.9rem 0 1.2rem;
+      }
+
+      .hero-copy {
+        font-size: 0.88rem;
+      }
+
+      .brand-foot {
+        font-size: 0.58rem;
+        gap: 8px 18px;
+      }
+
+      .form-panel {
+        padding: 1.4rem 1rem 2.6rem;
+      }
+
+      .login-card {
+        padding: 2.1rem 1.6rem 1.6rem;
+      }
+
+      .login-page .theme-toggle-btn {
+        top: 20px;
+        right: 20px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .brand-title {
+        font-size: 1.2rem;
+      }
+
+      .brand-sub {
+        letter-spacing: 0.2em;
+      }
+
+      .hero-statement {
+        font-size: 1.85rem;
+      }
+
+      .stamp {
+        letter-spacing: 0.22em;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .login-card,
+      .brand-mid {
+        animation: none;
+      }
+    }
   </style>
 </head>
-<body id="login-landing-view">
 
-  <!-- INTRO: layar terbelah vertikal saat pertama dibuka -->
-  <div class="intro-overlay" id="intro-overlay" aria-hidden="true">
-    <div class="intro-panel intro-panel-left"></div>
-    <div class="intro-panel intro-panel-right"></div>
-    <div class="intro-seam"></div>
-    <div class="intro-logo">
-      <img src="Assets/xrpb.jpg" alt="X-RPB">
-      <span>X-RPB SKARIGA</span>
-    </div>
-  </div>
+<body class="papan-theme login-page" id="login-landing-view">
 
-  <div class="split-container">
-    
-    <!-- LEFT SIDE: BRANDING -->
-    <div class="branding-side" id="branding-side">
-      <!-- Lapisan latar animasi -->
-      <div class="branding-bg" aria-hidden="true">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-        <div class="dot-grid"></div>
-        <div class="aurora"></div>
+  <button class="theme-toggle-btn" id="login-theme-toggle" title="Ganti Mode Tampilan">🌙</button>
+
+  <main class="login-split">
+
+    <!-- ============ KIRI: BRANDING PAPAN KELAS ============ -->
+    <section class="brand-panel" aria-label="Identitas Kelas X-RPB">
+
+      <div class="brand-top">
+        <div class="logo-seal">
+          <img src="Assets/xrpb.jpg" alt="Logo X-RPB SMKS PGRI 3 Malang">
+        </div>
+        <div>
+          <h3 class="brand-title">X-RPB SKARIGA</h3>
+          <p class="brand-sub">SMKS PGRI 3 Malang &middot; Est. 2026</p>
+        </div>
       </div>
-      
-      
-      <div class="branding-content">
-        <div class="brand-header">
-          <div class="brand-logo-wrap">
-            <img src="Assets/xrpb.jpg" alt="Logo X-RPB" class="brand-logo">
-            <span class="logo-ring"></span>
-          </div>
-          <div>
-            <h3 class="brand-name">X-RPB SKARIGA</h3>
-            <p class="brand-sub">The Sovereign Archive</p>
-          </div>
-        </div>
 
-        <div class="badge-wrap">
-          <div class="badge-premium">SMK PGRI 3</div>
-        </div>
-        
-        <h1 class="hero-text">
-          <span class="line line-1">
-            <span class="word">Crafting</span>
-            <span class="word accent-code">Code</span>
-            <span class="word">Creating</span>
-            <span class="word accent-gold">Impact!</span>
-          </span>
-          <span class="line line-2">
-            <span class="word accent-gold">X-RPB</span>
-            <span class="word"> IN THE HOST JAYA!</span>
-          </span>
+      <div class="brand-mid">
+        <span class="stamp">Portal Resmi Kelas</span>
+        <h1 class="hero-statement">
+          Editen DEWE! <em>Aku ga ngurus.</em>
         </h1>
+        <p class="hero-copy">
+          Jadwal, tugas, piket, dan kabar kelas X-RPB berkumpul di satu papan.
+          Log in untuk membukanya.
+        </p>
       </div>
 
-      <div class="contact-info">
+      <div class="brand-foot">
         <p>@xrpb.skariga</p>
-        <p>SMKS PGRI 3 MALANG</p>
+        <p>SMKS PGRI 3 Malang</p>
       </div>
-    </div>
+    </section>
 
-    <!-- RIGHT SIDE: LOGIN -->
-    <div class="login-side">
-      <div class="login-box">
-        <header class="login-header">
-          <h2>Log in Account</h2>
-          <p>Masukkan username dan password Anda untuk mengakses sistem informasi internal kelas X-RPB.</p>
+    <!-- ============ KANAN: FORM LOGIN ============ -->
+    <section class="form-panel" aria-label="Formulir masuk">
+      <div class="login-card">
+
+        <header class="login-head">
+          <span class="kicker">Pintu Masuk</span>
+          <h2>Log in</h2>
+          <p>Masukkan nama dan PIN akses untuk membuka papan kelas X-RPB.</p>
         </header>
 
         <form id="landing-login-form">
           <div class="form-group">
-            <label for="landing-username-input">Username:</label>
-            <input type="text" id="landing-username-input" class="form-control" placeholder="Nama atau nickname Anda..." required autocomplete="username">
+            <label class="form-label" for="landing-username-input">Nama / Nickname</label>
+            <input type="text" id="landing-username-input" class="form-control"
+              placeholder="Nama atau nickname Anda..." required autocomplete="username">
           </div>
 
           <div class="form-group">
-            <label for="landing-pass-input">Password (PIN Akses):</label>
-            <input type="password" id="landing-pass-input" class="form-control" placeholder="(kosongkan jika Siswa)">
+            <label class="form-label" for="landing-pass-input">PIN Akses</label>
+            <input type="password" id="landing-pass-input" class="form-control"
+              placeholder="Kosongkan jika Siswa" autocomplete="current-password">
           </div>
 
-          <button type="submit" class="btn-login">
-            Log in 
+          <button type="submit" class="xr-btn xr-btn-primary login-submit">
+            Masuk ke Kelas &rarr;
           </button>
         </form>
 
-        <div class="landing-footer">
-          <p class="landing-footer-hint">Log in untuk masuk ke dashboard</p>
-          <p class="landing-footer-note">Siswa: cukup isi username, password dikosongkan</p>
-          <p class="landing-footer-brand">Project Bersama.</p>
-        </div>
+        <footer class="login-foot">
+          <p><strong>Log in</strong> untuk membuka dashboard kelas</p>
+          <p>Siswa: cukup isi nama, PIN dikosongkan</p>
+          <p>Project Bersama &middot; Kelas X-RPB</p>
+        </footer>
+
       </div>
-    </div>
+    </section>
 
-  </div>
-
-  <!-- Parallax halus pada panel branding (desktop / non-touch) -->
-  <script>
-    (function () {
-      var side = document.getElementById("branding-side");
-      if (!side) return;
-      if (window.matchMedia && (window.matchMedia("(pointer: coarse)").matches || window.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
-      var bg = side.querySelector(".branding-bg");
-      var content = side.querySelector(".branding-content");
-      if (!bg || !content) return;
-      var targetX = 0, targetY = 0, curX = 0, curY = 0, raf = null, running = false;
-      function tick() {
-        curX += (targetX - curX) * 0.08;
-        curY += (targetY - curY) * 0.08;
-        bg.style.transform = "translate(" + (curX * -26).toFixed(2) + "px," + (curY * -26).toFixed(2) + "px)";
-        content.style.transform = "translate(" + (curX * 9).toFixed(2) + "px," + (curY * 9).toFixed(2) + "px)";
-        if (Math.abs(targetX - curX) > 0.005 || Math.abs(targetY - curY) > 0.005) {
-          raf = requestAnimationFrame(tick);
-        } else {
-          running = false;
-        }
-      }
-      function start() {
-        if (!running) { running = true; raf = requestAnimationFrame(tick); }
-      }
-      side.addEventListener("mousemove", function (e) {
-        var r = side.getBoundingClientRect();
-        targetX = (e.clientX - r.left) / r.width - 0.5;
-        targetY = (e.clientY - r.top) / r.height - 0.5;
-        start();
-      });
-      side.addEventListener("mouseleave", function () {
-        targetX = 0; targetY = 0;
-        start();
-      });
-    })();
-  </script>
-
-  <!-- Intro curtain: buka layar terbelah lalu tampilkan halaman -->
-  <script>
-    (function () {
-      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var overlay = document.getElementById("intro-overlay");
-      if (overlay && !reduce) {
-        // Bersihkan DOM setelah curtain selesai membuka
-        setTimeout(function () { overlay.remove(); }, 2350);
-      }
-      // Animasi masuk konten dimulai bersamaan curtain mulai terbuka
-      setTimeout(function () { document.body.classList.add("page-in"); }, reduce ? 0 : 1000);
-    })();
-  </script>
+  </main>
 
   <!-- CONFIGURATION SCRIPTS -->
   <script src="js/data.js"></script>
