@@ -7,7 +7,7 @@
 
   const STORAGE_KEY = "xrpb_piket_v1";
   const PETUGAS = [
-    "BOB ABYZAR",
+    "Putra Aditya",
     "CITRA LESTARI",
     "DIKA RAMADHAN",
     "EKA WULANDARI",
